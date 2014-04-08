@@ -5,6 +5,8 @@ date_default_timezone_set('Europe/Moscow');
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/yii/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
+if(file_exists('../devel'))
+    $config=dirname(__FILE__).'/protected/config/devel.php';
 
 // remove the following lines when in production mode
 defined('YII_DEBUG') or define('YII_DEBUG',true);
