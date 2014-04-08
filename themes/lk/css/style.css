@@ -1,0 +1,786 @@
+body {
+    font-size: 12px;
+    /*color: #1f3b50;*/
+    color: #ffffff;
+    font-family: Arial, Helvetica;
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    background: url(images/background.jpg) top center no-repeat #000;
+    overflow-x: hidden;
+}
+
+img {
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+a{
+    text-decoration: none;
+}
+
+.font16 {
+    font-weight: bold;
+    font-size: 16px;
+    color: #ccc;
+}
+
+.font20 {
+    font-size: 20px;
+    color: #eee;
+}
+
+/* прозрачный фон у меню*/
+.prozr {
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+    -moz-opacity: 0.7;
+    -khtml-opacity: 0.7;
+    opacity: 0.7;
+}
+
+.hr{
+    width: 799px;
+    height: 20px;
+    text-align: center;
+    z-index: 999;
+}
+
+.hr.up{
+    background-image: url(images/shadow_up.png);
+}
+
+.hr.down{
+    background-image: url(images/shadow_down.png);
+}
+
+#layout {
+    width: 100%;
+    max-width: 1280px;
+    border: 0;
+    border-collapse: collapse;
+    padding: 0;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* td menu */
+#left_menu{
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+    -moz-opacity: 0.7;
+    -khtml-opacity: 0.7;
+    opacity: 0.7;
+
+    background-color: #002038; width:15%; height:800px; vertical-align:top;
+}
+
+
+/* td.content */
+#content {
+    text-align: center;
+}
+
+/* главная страница с основным меню */
+#main {
+    display: inline-block;
+    position: relative;
+    width: 850px;
+    height: 800px;
+}
+
+#main div.content {
+    display: inline-block;
+    width: 850px;
+    height: 800px;
+    text-align: left;
+}
+
+#main div.content .logo{
+    position:absolute; top:100px; left:315px; width:535px; height:197; text-align:left;
+}
+
+#main div.content settings.logo{
+    position:absolute; top:100px; left:315px; width:535px; height:197; text-align:left;
+}
+
+
+#main div.content .logo .img{
+    display: inline-block;
+    background-image: url(images/logo_big.png);
+    width: 535px;
+    height: 197px;
+    border: 0;
+}
+
+#main div.content .logo_small{
+    margin-top: 10px;
+    margin-left: 500px;
+    width: 350px;
+    height: 104px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#main div.content .logo_small .img{
+    display: inline-block;
+    background-image: url(images/logo_small.png);
+    width: 350px;
+    height: 104px;
+    border: 0;
+}
+
+.border {
+    border: 2px solid #ffffff;
+}
+
+/* для 5ти или 5ти страничек, примерно однотипных*/
+#main div.content div.columns{
+    width: 799px;
+    /*height: 646px;*/
+    height: 466px;
+    text-align: left;
+    /*padding: 20px;*/
+    /*padding-left: 20px;*/
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.columns .column1{
+    margin-left: 20px;
+    width: 420px;
+    margin-top: 0;
+    float: left;
+    /*height: 466px;*/
+}
+
+.columns .column2{
+    margin-left: 460px;
+    margin-top: 0;
+    /*margin-top: 0px;
+    margin-left: 17px;*/
+    width: 318px;
+    height: 466px;
+    overflow-y: auto;
+}
+
+#live{
+    width: 420px;
+    height: 316px;
+    display: inline-block;
+    background-image: url(images/kadri.png);
+}
+
+.kadr{
+    display: inline-block;
+    /*background-image: url(images/kadri.png);*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #000000;
+}
+
+.kadr .font16{
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+
+.kadr.small{
+    width: 133px;
+    height: 100px;
+    margin-right: 14px;
+    margin-bottom: 7px;
+}
+
+.kadr.normal{
+    width: 170px;
+    height: 128px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.shadow{
+    box-shadow: #ccc 0 0 5px;
+}
+
+.shadow.on{
+    box-shadow: #ffb33a 0 0 8px;
+}
+
+
+.content .text{
+    text-align: left;
+    padding-left: 2px;
+    padding-top: 10px;
+}
+
+
+.menu {
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    /*width: 100%;*/
+    text-align: center;
+    text-align: center;
+}
+
+.menu.pos1 {
+    position: absolute;
+    top: 150px;
+    left: 10px;
+    text-align: left;
+    display: inline-block;
+}
+
+.menu.pos2 {
+    position: absolute;
+    top: 270px;
+    left: 100px;
+    text-align: left;
+    display: inline-block;
+}
+
+.menu.pos3 {
+    position: absolute;
+    top: 390px;
+    left: 230px;
+    text-align: left;
+    display: inline-block;
+}
+
+.menu.pos4 {
+    position: absolute;
+    top: 490px;
+    left: 410px;
+    text-align: left;
+    display: inline-block;
+}
+
+.menu.pos5 {
+    position: absolute;
+    top: 590px;
+    left: 600px;
+    text-align: left;
+    display: inline-block;
+}
+
+.menu a{
+    text-decoration: none;
+    width: 130px;
+    height: 105px;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* Смена бекграунда */
+.menu a:hover{
+    background-position: 0 -105px;
+}
+
+/*a.cam:hover,
+a.bal:hover,
+a.set:hover,
+a.arc:hover,
+a.news:hover {
+    background-position: 0 -90px;
+}*/
+
+a.cam {
+    background: url(images/cam.png);
+}
+
+a.bal {
+    background: url(images/bal.png);
+}
+
+a.set {
+    background: url(images/set.png);
+}
+
+a.arc {
+    background: url(images/arc.png);
+}
+
+a.news {
+    background: url(images/news.png);
+}
+
+a.motion {
+    background: url(images/runman.png);
+}
+
+a.rec24 {
+    background: url(images/rec3.png);
+}
+
+a.alarm{
+    background: url(images/notif.png);
+}
+
+a.timetable{
+    background: url(images/timetable.png);
+}
+
+a.user_data{
+    background: url(images/persdata.png);
+}
+
+/* оставлено для совместимости с нарезкой */
+/*#menu {
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+#menu a {
+    text-decoration: none;
+    width: 83px;
+    height: 90px;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#menu a:hover,
+#menu a.cam:hover,
+#menu a.bal:hover,
+#menu a.set:hover,
+#menu a.arc:hover,
+#menu a.news:hover
+#menu a.m_runman:hover,
+#menu a.m_rec3:hover,
+#menu a.m_notif:hover,
+#menu a.m_timetable:hover,
+#menu a.m_persdata:hover {
+    background-position: 0 -90px;
+}
+
+#menu a.cam {
+    background: url(images/cam.png);
+}
+
+#menu a.bal {
+    background: url(images/bal.png);
+}
+
+#menu a.set {
+    background: url(images/set.png);
+}
+
+#menu a.arc {
+    background: url(images/arc.png);
+}
+
+#menu a.news {
+    background: url(images/news.png);
+}
+
+#menu a.m_runman {
+    background: url(images/m_runman.png);
+}
+
+#menu a.m_rec3 {
+    background: url(images/m_rec3.png);
+}
+
+#menu a.m_notif {
+    background: url(images/m_notif.png);
+}
+
+#menu a.m_timetable {
+    background: url(images/m_timetable.png);
+}
+
+#menu a.m_persdata {
+    background: url(images/m_persdata.png);
+}*/
+
+/* Архив */
+
+#archive{
+}
+
+#archive .items{
+    overflow-y: scroll;
+    max-height: 588px;
+}
+
+#archive .items .view{
+    display: inline-block;
+    width: 170px;
+    height: 128px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    background: url(images/kadri.png);
+    background-size: contain;
+
+    color: #999999;
+}
+
+
+
+/* --------------------------- Календарь ---------------------------  */
+.calendar{
+    padding-top: 14px;
+    padding-left: 16px;
+}
+
+.calendar a{
+    display: inline-block;
+    width: 28px;
+    height: 47px;
+    line-height: 47px;
+    text-align: center;
+}
+
+.calendar a.month{
+    width: 143px;
+    background: url(images/mbg.png);
+    margin-right: 4px;
+}
+
+.calendar .left{
+    background-image: url(images/left.png);
+    margin-right: 4px;
+}
+
+.calendar .right{
+    background-image: url(images/right.png);
+}
+
+.balans{
+    padding-top: 20px;
+    padding-left: 108px;
+}
+
+.calendar a.month:link {
+    text-decoration: none;
+    color: #666;
+    font-weight: 700;
+    font-family: Arial, Helvetica;
+    font-size: 16px;
+    font-style: normal;
+}
+
+.calendar a.month:visited {
+    text-decoration: none;
+    color: #666;
+    font-weight: 700;
+    font-family: Arial, Helvetica;
+    font-size: 16px;
+    font-style: normal;
+}
+
+.calendar a.month:hover {
+    text-decoration: none;
+    color: #ffb33a;
+    background: url(images/mbg_a.png);
+}
+
+.calendar a.month.on {
+    text-decoration: none;
+    color: #ffb33a;
+    background: url(images/mbg_a.png);
+}
+/* --------------------------- /Календарь ---------------------------  */
+
+/*
+#smenu {
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+#smenu a {
+    text-decoration: none;
+    width: 129px;
+    height: 105px;
+    display: inline-block;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}*/
+
+/*
+#smenu a:hover,
+#smenu a.runman:hover,
+#smenu a.rec3:hover,
+#smenu a.notif:hover,
+#smenu a.timetable:hover,
+#smenu a.persdata:hover {
+    background-position: 0 -105px;
+}
+
+#smenu a.runman {
+    background: url(images/runman.png);
+}
+
+#smenu a.rec3 {
+    background: url(images/rec3.png);
+}
+
+#smenu a.notif {
+    background: url(images/notif.png);
+}
+
+#smenu a.timetable {
+    background: url(images/timetable.png);
+}
+
+#smenu a.persdata {
+    background: url(images/persdata.png);
+}*/
+
+
+/* Круглые таблицы с тенями */
+.t table {
+    color: #ffffff;
+    border: 1px solid #aaa;
+    border-spacing: 0px;
+    border-radius: 10px;
+    box-shadow: #ccc 0 0 5px;
+    background: url(images/month_cells.png) repeat-x;
+
+}
+
+.t td, .t th {
+
+    padding: 5px;
+    width: 80px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.t tr td:first-child {
+    width: 80px;
+    height: 40px;
+    border-top-left-radius: 10px;
+}
+
+.t tr td:last-child {
+    border-right: 0;
+    border-top-right-radius: 10px;
+}
+
+.t tr:last-child td {
+    border-bottom: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.t tr:first-child td {
+    text-align: center;
+    font-weight: bold;
+    background: url(images/month_topcells.png) repeat-x;
+    background-color: #082338;
+}
+
+.t_highlight {
+    background: url(images/month_cell_hl.png) repeat-x;
+}
+
+.t .on {
+    background: url(images/month_cell_hl.png) repeat-x;
+}
+
+/*.kadr_hl {
+    box-shadow: #ffb33a 0 0 8px;
+}
+
+.kadr_norm {
+    box-shadow: #ccc 0 0 5px;
+}*/
+
+input[type=checkbox].css-checkbox {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+    padding-left: 20px;
+    height: 20px;
+    display: inline-block;
+    line-height: 20px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    font-size: 16px;
+    color: #ddd;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-position: 0 -20px;
+}
+
+.css-label {
+    background-image: url(images/check.png);
+}
+
+.b_yellow {
+    border: none;
+    background: url('images/b_yellow.png') no-repeat top left;
+    width: 151px;
+    height: 31px;
+    color: #eee;
+    font-size: 18px;
+    text-align: left;
+}
+
+.b_yellow:hover {
+    border: none;
+    background: url('images/b_yellow_on.png') no-repeat top left;
+}
+
+.b_red {
+    border: none;
+    background: url('images/b_red.png') no-repeat top left;
+    width: 95px;
+    height: 31px;
+    color: #eee;
+    font-size: 18px;
+    text-align: left;
+}
+
+.b_red:hover {
+    border: none;
+    background: url('images/b_red_on.png') no-repeat top left;
+}
+
+.forms {
+    font-family: Arial, Helvetica;
+    font-size: 9pt;
+    color: #082338;
+    font-weight: normal;
+    background-color: #eee;
+    border: 1px solid;
+    border-color: #082338;
+}
+
+#status{
+    background-color: #082338;
+}
+
+#text{
+    /*background-color: #ffffff;*/
+}
+
+#control{
+    height: 40px;
+    width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#control .button{
+    color: #555555;
+    width: 48px;
+    height: 36px;
+    line-height:36px;
+    /*display: inline-block;*/
+    float: left;
+    cursor: pointer;
+
+    background-color: #f9f2ff;
+    border: 1px solid #cccccc;
+
+}
+
+#control .button:hover
+{
+    background-color: #cccccc;
+}
+
+#control .button.first{
+    -webkit-border-top-left-radius:4px;
+    -moz-border-radius-topleft:4px;
+    border-top-left-radius:4px;
+
+    -webkit-border-top-right-radius:0px;
+    -moz-border-radius-topright:0px;
+    border-top-right-radius:0px;
+
+    -webkit-border-bottom-right-radius:0px;
+    -moz-border-radius-bottomright:0px;
+    border-bottom-right-radius:0px;
+
+    -webkit-border-bottom-left-radius:4px;
+    -moz-border-radius-bottomleft:4px;
+    border-bottom-left-radius:4px;
+}
+
+#control .button.last{
+    -webkit-border-top-left-radius:0px;
+    -moz-border-radius-topleft:0px;
+    border-top-left-radius:0px;
+
+    -webkit-border-top-right-radius:4px;
+    -moz-border-radius-topright:4px;
+    border-top-right-radius:4px;
+
+    -webkit-border-bottom-right-radius:4px;
+    -moz-border-radius-bottomright:4px;
+    border-bottom-right-radius:4px;
+
+    -webkit-border-bottom-left-radius:0px;
+    -moz-border-radius-bottomleft:0px;
+    border-bottom-left-radius:0px;
+}
+
+#control .button.on{
+    background-color: #898989;
+}
+
+#control .button.play{
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(images/cc_mono/play24.png);
+}
+
+/* #f9f2ff, #898989 */
+#control .button.play.on{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(images/cc_mono/stop24.png);
+}
+
+#control .button.rec{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(images/cc_mono/rec24.png);
+}
+
+#control .button.cam{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(images/cc_mono/gear24.png);
+}
+
+#control .button.settings{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(images/cc_mono/wrench24.png);
+}
+
+#control .button.mtn{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(images/cc_mono/human24.png);
+}

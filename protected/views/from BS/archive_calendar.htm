@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" Content="text-html; charset=windows-1251">
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body topmargin="0" leftmargin="0"  marginheight="0" style="background: url(images/background.jpg) top center no-repeat #000;">
+
+
+<table style="width:100%; max-width:1280px;" cellspacing="0" cellpadding="0" align="center" >
+	<tr>
+		<td style="background-color: #002038; width:15%; height:800px; vertical-align:top;" class="prozr">
+			<!-- MENU START -->
+			<div id="menu">
+				<a href="http://10.112.28.35/cam/?mod=live" class="cam">&nbsp;</a><br>
+                <a href="http://10.112.28.35/cam/?mod=archive&day=0&cam=0" class="arc">&nbsp;</a><br>
+                <a href="http://10.112.28.35/cam/?mod=cash" class="bal">&nbsp;</a><br>
+                <a href="http://10.112.28.35/cam/?mod=settings" class="set">&nbsp;</a><br>
+                <a href="http://10.112.28.35/cam/?mod=news" class="news">&nbsp;</a><br>
+            </div>
+			<!-- MENU END -->
+		</td>
+		<td align="center" style="width:85%;">
+			<!-- MAIN BLOCK START -->
+			<div id="main">
+				<div style="position:relative; top:0px; left:0px; width:850px; height:800px; text-align:left;">
+					<div style="position:absolute; top:10px; left:500px; width:350px; height:104; text-align:left;">
+						<img src="images/logo_small.png" width="350" height="104" border="0">
+					</div>
+					<!-- Переключалка по архивам START -->
+					<div style="position:absolute; top:150px; left:25px; text-align:left;">
+						<div style="position:relative; top:0px; left:0px; width:450px; height:30px; text-align:left;">
+							<div style="position:absolute; top:0px; left:0px; width:150px; height:30;">
+								<a href="#" title="Архив крулосуточной записи" onmouseover="document.one.src='images/barch_kruglos_hl.png'; window.status='Архив крулосуточной записи'; return true" onmouseout="document.one.src='images/barch_kruglos.png';"><img src="images/barch_kruglos.png" alt="Архив крулосуточной записи" title="Архив крулосуточной записи" name="one" border="0" width="150" height="30"></a>
+							</div>
+							<div style="position:absolute; top:0px; left:150px; width:150px; height:30;">
+								<a href="#" title="Архив записи по расписанию" onmouseover="document.two.src='images/barch_raspis_hl.png'; window.status='Архив записи по расписанию'; return true" onmouseout="document.two.src='images/barch_raspis.png';"><img src="images/barch_raspis.png" alt="Архив записи по расписанию" title="Архив записи по расписанию" name="two" border="0" width="150" height="30"></a>
+							</div>
+							<div style="position:absolute; top:0px; left:300px; width:150px; height:30;">
+								<a href="#" title="Архив записи по движению" onmouseover="document.three.src='images/barch_move_hl.png'; window.status='Архив записи по движению'; return true" onmouseout="document.three.src='images/barch_move.png';"><img src="images/barch_move.png" alt="Архив записи по движению" title="Архив записи по движению" name="three" border="0" width="150" height="30"></a>
+							</div>
+						</div>
+					</div>
+					<div style="position:absolute; top:180px; left:25px; width:800px; height:20px; text-align:left; background-color:#002038; color:#fff; text-width:700; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;" class="prozr">
+						<span style="color:#ccc; font-weight: bold; font-family: Arial, Helvetica; font-size: 15px; font-style:normal;">&nbsp;Архив записей:</span>
+					</div>
+					<!-- Переключалка по архивам END -->
+					<!-- Месяца туда-сюда  начало-->
+					<div style="position:absolute; top:240px; left:26px; text-align:left;">
+						<div style="position:relative; top:0px; left:0px; width:799px; height:47px; text-align:left;">
+							<div style="position:absolute; top:0px; left:0px; width:28px; height:47; text-align:left;"><img src="images/left.png" width="28" height="47" border="0"></div>
+
+							<div style="position:absolute; top:0px; left:32px; width:147px; height:47; text-align:center;"><a href="#" class="month"><div class="month">ЯНВАРЬ</div></a></div>
+							<div style="position:absolute; top:0px; left:179px; width:147px; height:47; text-align:center;"><a href="#" class="month"><div class="month">ФЕВРАЛЬ</div></a></div>
+							<div style="position:absolute; top:0px; left:326px; width:147px; height:47; text-align:center;"><a href="#" class="month"><div class="month">МАРТ</div></a></div>
+							<div style="position:absolute; top:0px; left:473px; width:147px; height:47; text-align:center;"><a href="#" class="month"><div class="month">АПРЕЛЬ</div></a></div>
+							<div style="position:absolute; top:0px; left:620px; width:147px; height:47; text-align:center;"><a href="#" class="month"><div class="month">МАЙ</div></a></div>
+
+							<div style="position:absolute; top:0px; right:0px; width:28px; height:47; text-align:left;"><img src="images/right.png" width="28" height="47" border="0"></div>
+						</div>
+					</div>
+					<!-- Месяца туда-сюда  конец-->
+					<!-- Календарик ) -->
+					<div class="t" style="position:absolute; top:320px; left:110px; text-align:left;">
+						<table>
+							<tr><td>Пн</td><td>Вт</td><td>Ср</td><td>Чт</td><td>Пт</td><td>Сб</td><td>Вс</td></tr>
+							<tr><td>1</td><td>2</td><td class="t_highlight">3</td><td class="t_highlight">4</td><td>5</td><td>6</td><td>7</td></tr>
+							<tr><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr>
+							<tr><td>15</td><td>16</td><td>17</td><td>18</td><td class="t_highlight">19</td><td>20</td><td>21</td></tr>
+							<tr><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td></tr>
+							<tr><td>29</td><td>30</td><td>24</td><td>31</td><td>1</td><td>2</td><td>3</td></tr>
+						</table>
+					</div>
+					<!-- Календарик ) the END ))) -->
+				</div>
+			</div>
+			<!-- MAIN BLOCK END -->
+		</td>
+	</tr>
+</table>
+</center>
+
+</body>
+</html>

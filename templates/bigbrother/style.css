@@ -1,0 +1,902 @@
+/* main */
+
+html { 
+    background: url(image_core/bg.jpg) no-repeat left top; 
+    /*-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+    color: white;
+}
+
+a {
+    color: gray;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* end main */
+
+/* index */
+
+#wrapper {
+    width: 1000px;
+    height: auto;
+    min-height: 800px; 
+    /*margin: 0px auto 0px;*/
+    margin: 0px;
+}
+
+#header {
+    width: 1000px;
+    height: 200px;
+}
+
+
+#logo {
+    width: 530px;
+    height: 210px;
+    margin: 120px 30px 0px 550px;
+    background: url(image_core/logo_big.png);
+}
+
+#button_core_camera {
+    width: 120px;
+    height: 130px;
+    margin: -210px auto 0px 180px;  /* было 30 => +150*/
+    background: url(image_core/camera4.png);
+}
+
+#button_core_camera:hover {
+    background-position: 0 -130px;
+}
+
+#button_core_balance {
+    width: 120px;
+    height: 130px;
+    margin: 40px auto 0px 250px;    /* 100*/
+    background: url(image_core/money2.png);
+}
+
+#button_core_balance:hover {
+    background-position: 0 -130px;
+}
+
+#button_core_setting {
+    width: 120px;
+    height: 130px;
+    margin: 0px auto 0px 370px; /* 220 */
+    background: url(image_core/settings3.png);   
+}
+
+#button_core_setting:hover {
+    background-position: 0 -130px;
+    
+}
+
+#button_core_archive {
+    width: 120px;
+    height: 130px;
+    margin: -10px auto 0px 550px;   /* 400 */
+    background: url(image_core/archive.png);
+}
+
+#button_core_archive:hover {
+    background-position: 0 -130px;
+}
+
+
+#button_core_news {
+    width: 120px;
+    height: 130px;
+    margin: -120px auto 0px 730px;  /* 580 */
+    background: url(image_core/news.png);
+    
+}
+
+#button_core_news:hover {
+    background-position: 0 -130px;
+}
+
+/* end index */
+
+/* bottom menu */
+
+#bottom_div_menu {
+    height: 210px;
+    margin: 0px -200px 0px -200px;
+    background-color: rgba(0, 30, 54, 0.9);
+}
+
+#bottom_menu {
+    height: 210px;
+    width: 1000px;
+    margin: 0px auto;  
+}
+
+#button_bottom_menu_camera {
+    width: 120px;
+    height: 130px;
+    background: url(image_core/camera4.png);
+    float: left;
+    position: relative;
+    margin: 40px 0px 0px 50px;
+}
+
+#button_bottom_menu_camera:hover {
+    background-position: 0 -130px;
+}
+
+#button_bottom_menu_balance {
+    width: 120px;
+    height: 130px;
+    background: url(image_core/money2.png);
+    float: left;
+    position: relative;
+    margin: 40px 0px 0px 80px;
+}
+
+#button_bottom_menu_balance:hover {
+    background-position: 0 -130px;
+}
+
+#button_bottom_menu_setting {
+    width: 120px;
+    height: 130px;
+    background: url(image_core/settings3.png);
+    float: left;
+    position: relative;
+    margin: 40px 0px 0px 70px;
+}
+
+#button_bottom_menu_setting:hover {
+    background-position: 0 -130px;
+}
+
+#button_bottom_menu_archive {
+    width: 120px;
+    height: 130px;
+    background: url(image_core/archive.png);
+    float: left;
+    position: relative;
+    margin: 40px 0px 0px 70px;
+}
+
+#button_bottom_menu_archive:hover {
+    background-position: 0 -130px;
+}
+
+#button_bottom_menu_news {
+    width: 120px;
+    height: 130px;
+    background: url(image_core/news.png);
+    float: left;
+    position: relative;
+    margin: 40px 0px 0px 70px;
+}
+
+#button_bottom_menu_news:hover {
+    background-position: 0 -130px;
+}
+
+/* end bottom menu */
+
+/* camera view */
+
+#camera_main_view {
+    width: 520px;
+    height: 430px;
+    margin: 30px 0px 0px 30px;
+    
+    background-color: green;
+}
+
+#logo_small {
+    width: 410px;
+    height: 160px;
+    margin: 30px 10px 0px 0px;
+    float: right;
+    background: url(image_core/logo_small.png);
+}
+
+#camera_other_cam_div_list {
+    width: 430px;
+    height: auto;
+    min-height: 260px;
+    margin: -470px 10px 0px 560px;
+}
+
+#camera_select_div_name1 {
+    width: 200px;
+    height: 140px;
+    margin: 5px 0px 0px 10px;
+    display: inline-block;
+    
+    background-color: green;
+}
+
+#camera_view_span {
+    margin: 10px 0px 0px 30px;
+    font-size: 30px;
+    color: white;
+}
+
+/* end camera view */
+
+/* archive main */
+
+#archive_left_menu {
+    width: 180px;
+    height: 500px;
+    margin: 200px 0px 10px 10px;
+    border: 1px solid red;
+}
+
+#archive_left_menu_button_24h_rec {
+    width: 170px;
+    height: 100px;
+    margin: 10px 5px 0px 5px;
+    background-color: green;
+}
+
+#archive_left_menu_button_motion {
+    width: 170px;
+    height: 100px;
+    margin: 10px 5px 0px 5px;
+    background-color: green;
+}
+
+#archive_left_menu_button_timetable {
+    width: 170px;
+    height: 100px;
+    margin: 10px 5px 0px 5px;
+    background-color: green;
+}
+
+#archive_main_view {
+    width: 790px;
+    height: 500px;
+    float: right;
+    margin: -510px 10px 0px 10px;
+    border: 1px solid red;
+}
+
+#archive_up_menu_button_24h_rec {
+    width: 170px;
+    height: 100px;
+    float: left;
+    margin: 70px 0px 10px 10px;
+    background: url(image_core/button_archive_24h_rec3.png);
+}
+
+#archive_up_menu_button_motion {
+    width: 170px;
+    height: 100px;
+    float: left;
+    margin: 70px 0px 10px 10px;
+    background: url(image_core/button_archive_motion.png);
+    
+}
+
+#archive_up_menu_button_timetable {
+    width: 170px;
+    height: 100px;
+    float: left;
+    margin: 70px 0px 10px 10px;
+    background: url(image_core/button_archive_timetable2.png);
+    
+}
+
+#archive_wrapper {
+    width: 1000px;
+    height: auto;
+    min-height: 300px;
+    margin: 0px;
+}
+
+#button_arrow_up {
+    width: 40px;
+    height: 30px;
+    margin: 0px 480px 0px;
+    background: url(image_core/button_arrow_up.png);
+}
+
+#button_arrow_down {
+    width: 40px;
+    height: 30px;
+    margin: 0px 480px 10px;
+    background: url(image_core/button_arrow_down.png);
+}
+
+#shadow_up {
+    width: 1000px;
+    height: 20px;
+    margin: 10px auto 0px;
+    background-image: url(image_core/shadow_up.png);
+}
+
+#shadow_down {
+    width: 1000px;
+    height: 20px;
+    margin: 0px auto 10px;
+    background-image: url(image_core/shadow_down.png);
+}
+
+/* end archive main */
+
+/* archive select */
+
+#div_archive_select_name1 {
+    width: 200px;
+    height: 140px;
+    margin: 10px 0px 10px 35px;
+    display: inline-block;
+    
+    background-color: green;
+}
+
+#div_archive_select_name2 {
+    width: 200px;
+    height: 140px;
+    margin: 10px 0px 10px 35px;
+    display: inline-block;
+    
+    background-color: green;
+}
+
+/* end archive select */
+
+/* archive rec */
+
+#archive_slide_bar {
+    width: 830px;
+    height: 20px;
+    margin: 10px auto;
+    background: url(image_core/archive_slide_bar.png);
+}
+
+#archive_rec_time_div {
+    width: 300px;
+    height: 30px;
+    margin: 10px auto;
+}
+
+#archive_rec_time_div span {
+    color: white;
+    font-size: 30px;
+    padding-right: 20px;
+}
+
+#archive_rec_time_div b {
+    font-size: 20px;
+}
+
+/* end archive rec */
+
+/* archive calendar */
+
+#archive_top_calendar_menu {
+    width: 1000px;
+    height: 70px;
+    margin: 10px 0px 10px;
+}
+
+#button_arrow_left {
+    width: 25px;
+    height: 40px;
+    background: url(image_core/button_arrow_left.png);
+    display: inline-block;
+    margin: 15px 15px;
+}
+
+#button_arrow_right {
+    width: 25px;
+    height: 40px;
+    background: url(image_core/button_arrow_right.png);
+    display: inline-block;
+    margin: 15px 15px;
+}
+
+#button_calendar_month {  
+    width: 140px;
+    height: 40px;
+    background: url(image_core/button_calendar_month.png);
+    display: inline-block;
+    margin: 15px 15px;
+    
+}
+
+#archive_calendar_table {
+    width: 700px;
+    height: 470px;
+    margin: 0px 150px;
+    
+}
+
+
+#archive_calendar_table table {
+    margin: 0px;
+    padding: 0px;
+    border-spacing: 0;
+    color: white;
+}
+
+#archive_calendar_table th {
+    background-color: #0b273b;
+    width: 100px;
+    height: 75px;
+    font-size: 30px;
+}
+
+#archive_calendar_table td {
+    background-color: #193449;
+    width: 100px;
+    height: 75px;
+    text-align: center;
+    font-size: 26px;
+}
+
+#archive_calendar_table td:hover {
+    background-color: #f98514;
+}
+
+/* end archive calendar */
+
+/* archive view*/
+
+#button_arrow_right_up {
+    width: 40px;
+    height: 30px;
+    margin: 10px 0px 0px 700px;
+    background: url(image_core/button_arrow_up.png);
+}
+
+#button_arrow_right_down {
+    width: 40px;
+    height: 30px;
+    margin: 0px 0px 10px 700px;
+    background: url(image_core/button_arrow_down.png);
+}
+
+#archive_view {
+    width: 420px;
+    height: 320px;
+    margin: 10px 0px 0px 20px;
+    
+    background-color: green;
+}
+
+#archive_view_list {
+    width: 500px;
+    height: auto;
+    min-height: 380px;
+    margin: -330px 0px 0px 470px;
+}
+
+#div_archive_view_name1 {
+    width: 140px;
+    height: 100px;
+    margin: 10px 10px;
+    display: inline-block;
+    
+    background-color: green;
+}
+
+/* end archive view*/
+
+/* balance */
+
+#balance_wrapper {
+    width: 1000px;
+    height: auto;
+    min-height: 300px;
+    margin: 50px 80px;
+}
+
+#balance_wrapper table {
+    margin-bottom: 50px;
+    color: white;
+    font-size: 30px;
+}
+
+#balance_wrapper td {
+    padding-right: 50px;
+}
+
+#balance_wrapper .name_td {
+    width: 130px;
+}
+
+/* end balance */
+
+/* news */
+
+#news_wrapper {
+    width: 1000px;
+    height: auto;
+    min-height: 530px;
+}
+
+#news_div {
+    color: white;
+    font-size: 26px;
+}
+
+#news_div p {
+    font-size: 26px;
+}
+
+/* end news */
+
+/* setting */
+
+#button_setting_motion_rec {
+    width: 160px;
+    height: 130px;
+    margin: -280px 0px 0px 40px;
+    background: url(image_core/settings_button/runman.png);
+}
+
+#button_setting_motion_rec:hover {
+    background-position: 0 -130px;
+}
+
+#button_setting_24h_rec {
+    width: 160px;
+    height: 130px;
+    margin: 30px 0px 0px 90px;
+    background: url(image_core/settings_button/rec2.png);
+}
+
+#button_setting_24h_rec:hover {
+    background-position: 0 -130px;
+}
+
+#button_setting_notification {
+    width: 160px;
+    height: 130px;
+    margin: -10px 0px 0px 220px;
+    background: url(image_core/settings_button/notif.png);
+}
+
+#button_setting_notification:hover {
+    background-position: 0 -130px;
+}
+
+#button_setting_timetable {
+    width: 160px;
+    height: 130px;
+    margin: -50px 0px 0px 380px;
+    background: url(image_core/settings_button/schd2.png);
+}
+
+#button_setting_timetable:hover {
+    background-position: 0 -130px;
+}
+
+#button_setting_personal_data {
+    width: 160px;
+    height: 130px;
+    margin: -80px 0px 0px 560px;
+    background: url(image_core/settings_button/persdata.png);   
+}
+
+#button_setting_personal_data:hover {
+    background-position: 0 -130px;
+}
+
+/* end setting */
+
+/* bottom menu */
+
+#bottom_settings_div_menu {
+    height: 210px;
+    margin: 0px 0px 0px 0px;
+    background-color: rgba(0, 30, 54, 0.9);
+}
+
+#bottom_settings_menu {
+    height: 210px;
+    width: 1000px;
+    margin: 0px auto;  
+}
+
+#button_bottom_settings_back {
+    width: 160px;
+    height: 130px;
+    background: url(image_core/settings_button/back_settings2.png);
+    float: left;
+    position: relative;
+    margin: 20px 0px 0px 40px;
+}
+
+#button_bottom_settings_menu_motion_rec {
+    width: 160px;
+    height: 130px;
+    background: url(image_core/settings_button/runman.png);
+    float: left;
+    position: relative;
+    margin: 40px 0px 0px 40px;
+}
+
+#button_bottom_settings_menu_motion_rec:hover {
+    background-position: 0 -130px;
+}
+
+#button_bottom_settings_24h_rec {
+    width: 160px;
+    height: 130px;
+    background: url(image_core/settings_button/rec3.png); 
+    float: left;
+    position: relative;
+    margin: 40px 0px 0px 40px;
+}
+
+#button_bottom_settings_24h_rec:hover {
+    background-position: 0 -130px;
+}
+
+#button_bottom_settings_notification {
+    width: 160px;
+    height: 130px;
+    background: url(image_core/settings_button/notif.png);    
+    float: left;
+    position: relative;
+    margin: 40px 0px 0px 40px;
+}
+
+#button_bottom_settings_notification:hover {
+    background-position: 0 -130px;
+}
+
+#button_bottom_settings_timetable {
+    width: 160px;
+    height: 130px;
+    background: url(image_core/settings_button/timetable.png); 
+    float: left;
+    position: relative;
+    margin: 40px 0px 0px 40px;
+}
+
+#button_bottom_settings_timetable:hover {
+    background-position: 0 -130px;
+}
+
+#button_bottom_settings_personal_data {
+    width: 160px;
+    height: 130px;
+    background: url(image_core/settings_button/persdata.png); 
+    float: left;
+    position: relative;
+    margin: 40px 0px 0px 40px;
+}
+
+#button_bottom_settings_personal_data:hover {
+    background-position: 0 -130px;
+}
+
+/* end bottom menu */
+
+
+/* settings */
+
+#settings_wrapper {
+    width: 1000px;
+    height: auto;
+    min-height: 560px;
+    margin: 0px;
+}
+
+#settings_left_div {
+    width: 200px;
+    height: 560px;
+    margin: 0px;
+    display: inline-block;
+    color: white;
+    font-size: 17px;
+}
+
+#settings_left_div form {
+    color: white;
+    font-size: 17px;
+    float: left;
+    display: block;
+    margin-left: 20px;
+}
+
+#settings_left_div .name_span {
+    margin: 0px 20px;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+}
+
+#settings_left_div input {
+    margin: 20px 20px;
+}
+
+#settings_left_div .button_edit {
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    background-color: #f58110;
+    border: 1px;
+    border-radius: 5px;
+}
+
+#settings_left_div .button_del {
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    background-color: #9f2f14;
+    border: 1px;
+    border-radius: 5px;
+}
+
+#settings_center_div {
+    width: 400px;
+    height: 560px;
+    margin: 0px;
+    display: inline-block;
+}
+
+#settings_center_div span {
+    width: 400px;
+    float: left;
+    display: block;
+    margin: 20px 20px 0px;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+}
+
+#settings_right_div {
+    width: 300px;
+    height: 560px;
+    margin: 0px;
+    display: inline-block;
+}
+
+#settings_right_div form {
+    float: left;
+    display: block;
+    margin-left: 20px;
+    font-size: 17px;
+    color: white;
+}
+
+#settings_right_div .name_span {
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    margin-top: 30px;
+}
+
+#settings_right_div input,select {
+     margin: 10px 0px 10px 50px;
+}
+
+#settings_right_div .end_time {
+    margin-left: 0px;
+}
+
+#settings_right_div .button_save {
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    background-color: #f58110;
+    border: 1px;
+    border-radius: 5px;
+}
+
+#settings_left_shadow {
+    width: 40px;
+    height: 560px;
+    margin: 0px;
+    background: url(image_core/settings_button/settings_left_shadow.png);
+    display: inline-block;
+}
+
+#settings_right_shadow {
+    width: 40px;
+    height: 560px;
+    margin: 0px;
+    background: url(image_core/settings_button/setting_right_shadow.png);
+    display: inline-block;
+    
+}
+
+/* end settings */
+
+/* settings rec */
+
+#settings_rec_wrapper {
+    width: 1000px;
+    height: auto;
+    min-height: 560px;
+    margin: 0px;
+}
+
+#settings_rec_left_div {
+    width: 330px;
+    height: 560px;
+    display: inline-block;
+}
+
+#div_settings_rec_name1 {
+    width: 150px;
+    height: 90px;
+    margin: 10px 0px 10px 10px;
+    display: inline-block;
+    float: left;
+    
+    background-color: green;
+}
+
+#settings_rec_center_div {
+    width: 390px;
+    height: 560px;
+    display: inline-block;  
+}
+
+#div_settings_rec_view {
+    width: 360px;
+    height: 200px;
+    margin: 50px auto;
+    
+    background-color: green;
+}
+
+#settings_rec_center_div form {
+    float: left;
+    display: block;
+    font-size: 17px;
+    color: white;
+}
+
+#settings_rec_right_div {
+    width: 220px;
+    height: 560px;
+    display: inline-block;
+}
+
+#settings_rec_right_div form {
+    color: white;
+    font-size: 17px;
+    float: left;
+    display: block;
+    margin-left: 20px;
+}
+
+#settings_rec_right_div .name_span {
+    margin: 0px 20px;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+}
+
+#settings_rec_right_div input {
+    margin: 20px 20px;
+}
+
+#settings_rec_right_div .button_save {
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    background-color: #f58110;
+    border: 1px;
+    border-radius: 5px;
+}
+
+#settings_rec_shadow {
+    width: 40px;
+    height: 560px;
+    background: url(image_core/settings_button/setting_right_shadow.png);
+    display: inline-block;
+}
+
+
+/* end settings rec */

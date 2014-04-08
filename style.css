@@ -1,0 +1,296 @@
+html { 
+    /*background: url(image_core/bg.jpg) no-repeat left top; */
+    /*-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+}
+
+body{
+    margin: 0px;
+    /*color: gray;*/
+    min-height: 100%;
+    background-color: darkgrey;
+}
+
+a{
+    text-decoration: none;
+}
+
+a img{
+    border: 0px;
+}
+
+#body {
+    margin: 0px auto 0px;
+    max-width: 1280px;
+    min-height: 800px;
+    background: url(image_core/bg.png) no-repeat left top;
+}
+
+#body div.old_menu{
+    background-color: rgba(255,255,255,0.5);
+}
+
+#main{
+    min-height: 800px;
+}
+
+/* паддинг сверху для логотипа и кнопок, паддинг снизу для меню */
+.content{
+    padding-top: 190px; /* 180 + 10 */
+    padding-bottom: 230px;  /* 218+12 */
+    min-height: 400px;
+    max-height: 750px;
+    overflow:auto;
+    color: white;
+    font-family: MS Sans Serif;
+    font-size: 23px;
+    text-align: center;
+}
+
+.content a{
+    color: white;
+}
+
+#calendar{
+    text-align: center;
+}
+
+#calendar div.year{
+    margin-bottom: 10px;
+}
+
+#calendar table.month{
+    margin-bottom: 22px;
+}
+
+#calendar .month td{
+    color: #8c8c8c;
+    font-weight: bold;
+    font-family: Myriad Pro;
+    font-size: 23px;
+    line-height: 47px;
+    width: 143px;
+    background: url(image_core/mbg.png)  no-repeat center top;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+#calendar .month td.cur{
+    color: #f1f1f1;
+    background: url(image_core/mbg_a.png)  no-repeat center top;
+}
+
+#calendar .month .gt,
+#calendar .month .lt,
+#calendar .month td.gt > a,
+#calendar .month td.lt > a
+{
+    width: 68px;
+    line-height: 47px;
+    display: inline-block;
+}
+#calendar .month .lt{
+    background: url(image_core/left.png)  no-repeat center top;
+}
+#calendar .month .gt{
+    background: url(image_core/right.png)  no-repeat center top;
+}
+
+
+#calendar table{
+    border:0;
+    padding:0;
+    border-collapse:collapse;
+    
+    margin: 0px auto;
+}
+
+#calendar table.month{
+    width: auto;
+}
+
+#calendar > table{
+    width: 704px;
+}
+
+#calendar table td.header{
+    width: 704px;
+    
+    line-height: 79px;
+    background: url(image_core/cal_head.png) no-repeat left top;
+    /*-moz-background-size: cover; /* Firefox 3.6+ */
+    /*-webkit-background-size: cover; /* Safari 3.1+ � Chrome 4.0+ */
+    /*-o-background-size: cover; /* Opera 9.6+ */
+    /*background-size: cover; /* ����������� �������� */
+}
+
+#calendar table td.body{
+    background: url(image_core/cal_back.png)  no-repeat;
+    -moz-background-size: cover; /* Firefox 3.6+ */
+    -webkit-background-size: cover; /* Safari 3.1+ � Chrome 4.0+ */
+    -o-background-size: cover; /* Opera 9.6+ */
+    background-size: cover; /* ����������� �������� */
+}
+
+#calendar table td.body table tr td{
+    font-size: 23px;
+    /*line-height: 64px;*/
+    font-family: Myriad Pro;
+    font-weight: bold;
+    color: white;
+    width: 100px;
+    line-height: 73px;
+    text-align: center;
+}
+
+#calendar table td.body table td a{
+    background: url(image_core/cal_active.png) no-repeat center center; 
+    /*-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    color: white;
+}
+
+#calendar table td.body table td.disabled{
+    color: #858282;
+}
+
+#calendar table td.body table td.active a{
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    line-height: 75px;
+}
+
+div.archive{    /* блок для архива */
+    display: inline-block;
+}
+
+/* окно выбора камеры */
+div.archive .frame{  /* блок рамки камеры */
+    margin: 14px;
+    width: 189px;
+    height: 121px;
+    padding-top: 2px;
+    /*border: 1px solid white;*/
+    background: url(image_core/cam_v_frame_185_116.png) no-repeat center center; 
+    display: inline-block;
+}
+
+div.archive .frame .cam{  /* картинка камеры */
+    width: 185px;
+    height: 116px;
+    background-color: darkgray;
+    margin: 0px auto;
+}
+
+div.archive .frame .name{     /* имя камеры */
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    height: 32px;
+    line-height: 31px;
+    font-size: 16px;
+    font-family: Myriad Pro;
+    color: white;
+    display: block;
+    margin-top: -33px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+div.news{
+    width: 980px;
+    margin: 0px auto;
+    text-align: left;
+    font-family: Myriad Pro;
+    font-size: 24px;
+    padding-bottom: 20px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+div.news div.date{
+    font-weight: bold;
+    padding-bottom: 8px;
+    padding-top: 30px;
+}
+
+#menu{
+    margin-bottom: 0px;
+    margin-left: 0px;
+    height: 218px;
+    margin-top: -218px;
+    width: 100%;
+    background: url(image_core/menu_bg.png) left top;
+    text-align: center;
+}
+
+#menu a{
+    text-decoration: none;
+    width: 120px;
+    height: 130px;
+    display: inline-block;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#menu a:hover,
+#menu a.cam:hover,
+#menu a.bal:hover,
+#menu a.set:hover,
+#menu a.arc:hover,
+#menu a.news:hover
+{
+    background-position: 0 -130px;
+}
+
+#menu a.cam{
+    background: url(image_core/cam.png);
+}
+
+#menu a.bal{
+    background: url(image_core/bal.png);
+}
+
+#menu a.set{
+    background: url(image_core/set.png);
+}
+
+#menu a.arc{
+    background: url(image_core/arc.png);
+}
+
+#menu a.news{
+    background: url(image_core/news.png);
+}
+
+#header{
+    height: 180px;
+    margin-bottom: -180px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#header a.btn{
+    padding-right: 16px;
+    margin-top: -100px;
+}
+
+#header #logo{
+    padding-left: 10px;
+    display: inline-block;
+    margin-top: 26px;
+}
+
+#header #logo img{
+    padding-bottom: 30px;
+}
