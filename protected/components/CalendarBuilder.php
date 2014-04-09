@@ -106,6 +106,54 @@ class CalendarBuilder extends CComponent
 
     }
 
+    public function getDate($offset){
+        if($offset == 0)
+            return array(
+                'y' => $this->getYear(),
+                'm' => $this->getMonth(),
+            );
+        $m = $this->getMonth() + $offset;
+        $y = $this->getYear();
+        if($m > 12){
+            $y++;
+            $m = $m - 12;
+        }
+        if($m < 1){
+            $y--;
+            $m = $m + 12;
+        }
+        return array(
+            'y' => $y,
+            'm' => $m,
+        );
+    }
+
+    public function getPrevDate($p = 1){
+        $m = $this->getPrevMonth($p);
+        $y = $this->getYear();
+        if($m==0){
+            $m = 13 - $p;
+            $y = $y - 1;
+        }
+        return array(
+            'y' => $y,
+            'm' => $m,
+        );
+    }
+
+    public function getNextDate($p = 1){
+        $m = $this->getNextMonth($p);
+        $y = $this->getYear();
+        if($m==0){
+            $m = $p;
+            $y = $y + 1;
+        }
+        return array(
+            'y' => $y,
+            'm' => $m,
+        );
+    }
+
     function getPrevMonth($p = 1)
     {
         return ($this->m - $p < 0) ? 0 : $this->m - $p;
@@ -185,6 +233,25 @@ class CalendarBuilder extends CComponent
             $this->cal[$this->getYear()][$this->getMonth()][$this->getLastWeekNo()][$i] = 0;
         }
     }
+
+    public function getNavigateHtml(Controller $controller, array $params){
+        $ret = '';
+        $ret.= '<div class="calendar">';
+            $ret.= '<a href="'.$controller->createUrl($controller->getRoute(), array_merge($params, $this->getDate(-1))).'" class="left">&nbsp;</a>';
+            for($i = -2; $i<3; $i++){
+                $m = $this->getDate($i)['m'];
+                $m_name = strtoupper($this->getMonthName($m));
+                $y = $this->getDate($i)['y'];
+                $url = $controller->createUrl($controller->getRoute(), array_merge($params, $this->getDate($i)) );
+                $on = '';
+                if($i==0) $on=' on';
+                $ret.= '<a href="'.$url.'" class="month'.$on.'">'.$m_name.'</a>';
+            }
+            $ret.= '<a href="'.$controller->createUrl($controller->getRoute(), array_merge($params, $this->getDate(1))).'" class="right">&nbsp;</a>';
+        $ret.= '</div>';
+        return $ret;
+    }
+
 
     // массив для отображения календаря
     function Display()

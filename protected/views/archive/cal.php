@@ -58,27 +58,13 @@ foreach($dataProvider->getData() as $archive){
 <!-- Месяца туда-сюда  начало-->
 
 <?php
-    //TODO: СДелать элемент "переключатель месяца"
     $cal = new CalendarBuilder($year, $month);
     $calendar = $cal->Display();
 ?>
 
 <div style="height: 90px;" class="">
-    <div class="calendar">
-
-        <a href="#" class="left">&nbsp;</a>
-
-        <a href="#" class="month"><?php echo strtoupper($cal->getMonthName($cal->getPrevMonth(2))); ?></a>
-        <a href="#" class="month"><?php echo strtoupper($cal->getMonthName($cal->getPrevMonth(1))); ?></a>
-        <a href="#" class="month on"><?php echo strtoupper($cal->getMonthName($cal->getMonth())); ?></a>
-        <a href="#" class="month"><?php echo strtoupper($cal->getMonthName($cal->getNextMonth(1))); ?></a>
-        <a href="#" class="month"><?php echo strtoupper($cal->getMonthName($cal->getNextMonth(2))); ?></a>
-
-        <a href="#" class="right">&nbsp;</a>
-
-    </div>
+    <?=$cal->getNavigateHtml($this,array('cid' => $cid));?>
 </div>
-
 
 
 <!-- Месяца туда-сюда  конец-->

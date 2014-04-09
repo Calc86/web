@@ -122,14 +122,14 @@ class ArchiveController extends Controller
 	}
 
 
-    public function actionCal($cid,$y=0,$m=0)
+    public function actionCal($cid,$m=0,$y=0)
     {
         //TODO: Сделать проверку на int и изменения значений
         if(!$y) $y = (int) date('Y');
         if(!$m) $m = (int) date('m');
 
-        $start = mktime(0,0,0,$m,1,$y);
-        $end =   mktime(0,0,0,$m+1,1,$y);
+        $start = mktime(0, 0, 0, $m, 1, $y);
+        $end =   mktime(0, 0, 0, $m+1, 1, $y);
 
         $criteria = new CDbCriteria();
         $criteria->distinct = true;
@@ -138,9 +138,10 @@ class ArchiveController extends Controller
         $criteria->addBetweenCondition('date_start',$start,$end);
         $criteria->addCondition("rebuilded='yes'");
 
-        $dataProvider=new CActiveDataProvider('Archive',array(
-            'criteria'=>$criteria,
-            'pagination'=>false
+        $dataProvider=new CActiveDataProvider('Archive',
+            array(
+                'criteria'=>$criteria,
+                'pagination'=>false
             )
         );
 
@@ -180,6 +181,7 @@ class ArchiveController extends Controller
         $file = $model->pathMp4();
         if(!$file) $file = $model->pathAvi();
         $file = str_replace('/home/vlc/vlc','',$file);
+        $file = str_replace('/home/vlc/web','',$file);
         $this->redirect($file);
     }
 

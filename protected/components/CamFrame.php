@@ -120,13 +120,13 @@ class CamFrame extends CComponent
         //$ret.= '<div style="height: 20px; margin-bottom: -20px;">' . $this->cam->cam->name . '</div>';
         $ret.= '<center>
             <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
-                 codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
+                 codebase="http://get.videolan.org/vlc/2.1.3/win32/vlc-2.1.3-win32.exe"
                  width="' . $this->width . '" height="' . $this->height . '" id="vlc'.rand().'" events="True">
                <param name="Src" value="'.$source.'" />
                <param name="ShowDisplay" value="True" />
                <param name="AutoLoop" value="True" />
                <param name="AutoPlay" value="True" />
-               <embed id="vlcEmb'.rand().'"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="yes" width="'.$this->width.'" height="'.$this->height.'"
+               <embed id="vlcEmb'.rand().'"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2"  pluginspage="http://www.videolan.org" autoplay="yes" loop="yes" width="'.$this->width.'" height="'.$this->height.'"
                  target="'.$source.'" ></embed>
             </OBJECT>
                </center>';
