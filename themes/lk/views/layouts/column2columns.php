@@ -20,6 +20,7 @@
             <div id="main">
                 <div class="content">
                     <div class="logo_small">
+                        <a href="<?=$this->createUrl('/site/logout')?>">logout</a>
                         <a href="<?=$this->createUrl("/cam")?>" class="img">
                             &nbsp;<br>
                             UserID:<?=Yii::app()->user->id?><br>
