@@ -85,7 +85,7 @@ $this->layout = 'column0';
     </div>-->
     <div class="span-6 last tarif">
         <a href="#" class="button3">Тариф</a>
-        <span class="cost">300</span><span>р/мес.</span>
+        <span class="cost">500</span><span>р/мес.</span>
         <p>1 камера</p>
         <p>Постоянная запись</p>
         <p>Облачное хранилище записей</p>
