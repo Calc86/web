@@ -35,7 +35,7 @@ else{
     else{
         echo 'Поток не является h264, можно только скачать';
         $frame = new CamFrame(new CamSettings());
-        echo $frame->vlc2_plugin($this->createUrl('stream',array('id'=>$model->id)));
+        echo $frame->vlc2_plugin($this->getFile($model->pathAvi()));
     }
 }
 
