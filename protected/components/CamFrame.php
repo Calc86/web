@@ -113,7 +113,7 @@ class CamFrame extends CComponent
         return $ret;
     }
 
-    protected function vlc2_plugin($source) {
+    public function vlc2_plugin($source) {
         $ret = '';
         $ret.= '<div style="display: inline-block; border: 0px solid black; width: ' . ($this->width) . 'px;">';
         //echo '<h5>'.$row2['cam_name'].'</h5>';
