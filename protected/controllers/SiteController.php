@@ -21,14 +21,7 @@ class SiteController extends Controller
         );
     }
 
-    /**
-     * This is the default 'index' action that is invoked
-     * when an action is not explicitly requested by users.
-     */
-    public function actionIndex()
-    {
-        // renders the view file 'protected/views/site/index.php'
-        // using the default layout 'protected/views/layouts/main.php'
+    private function loadMain(){
         $criteria = new CDbCriteria();
         //$criteria->limit = 1;
         $criteria->order = 'dtc DESC';
@@ -38,6 +31,8 @@ class SiteController extends Controller
             'main_col1',
             'main_col2',
             'main_col3',
+            'main_about',
+            'main_contact',
         );
 
         $main = array();
@@ -48,8 +43,24 @@ class SiteController extends Controller
             $main[$block] = Pages::model()->find($c);
         }
 
+        return $main;
+    }
+
+    public function actionAbout(){
+        $this->render('alias',array(
+            'main'=>$this->loadMain(),
+            'alias'=>'main_about'
+        ));
+    }
+
+    /**
+     * This is the default 'index' action that is invoked
+     * when an action is not explicitly requested by users.
+     */
+    public function actionIndex()
+    {
 		$this->render('index',array(
-            'main'=>$main,
+            'main'=>$this->loadMain(),
         ));
 	}
 
@@ -72,7 +83,7 @@ class SiteController extends Controller
 	 */
 	public function actionContact()
 	{
-		$model=new ContactForm;
+		/*$model=new ContactForm;
 		if(isset($_POST['ContactForm']))
 		{
 			$model->attributes=$_POST['ContactForm'];
@@ -90,7 +101,11 @@ class SiteController extends Controller
 				$this->refresh();
 			}
 		}
-		$this->render('contact',array('model'=>$model));
+		$this->render('contact',array('model'=>$model));*/
+        $this->render('alias',array(
+            'main'=>$this->loadMain(),
+            'alias'=>'main_contact'
+        ));
 	}
 
 	/**
