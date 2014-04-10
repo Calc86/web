@@ -33,7 +33,7 @@ else{
         echo 'Файл не найден';
     }
     else{
-        echo 'Поток не является h264, можно только скачать';
+        echo 'Поток не является h264, просмотр на мобильных устройствах не возможен<br>';
         $frame = new CamFrame(new CamSettings());
         echo $frame->vlc2_plugin($this->getFile($model->pathAvi()));
     }
