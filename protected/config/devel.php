@@ -97,5 +97,7 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+        //Our custom config
+        'vlcLiveHost' => '10.154.28.203',   //Yii::app()->params->toto
 	),
 );
