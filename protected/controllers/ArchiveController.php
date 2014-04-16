@@ -182,6 +182,15 @@ class ArchiveController extends Controller
         return $file;
     }
 
+    public function getUrl($id){
+        $model = $this->loadModel($id);
+        $file = $model->pathMp4();
+        if(!$file) $file = $model->pathAvi();
+        $file = str_replace('/home/vlc/vlc','',$file);
+        $file = str_replace('/home/vlc/web','',$file);
+        return $file;
+    }
+
     public function actionStream($id){
         $model = $this->loadModel($id);
         $file = $model->pathMp4();

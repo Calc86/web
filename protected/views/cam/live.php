@@ -77,6 +77,13 @@ if(count($cams->data)){
             }
         ?>
     </div>
+    <?php
+    /*
+    <div>
+        <video src="http://10.154.28.203/lhttp/1/stream-8.m3u8" autoplay="autoplay" controls="controls">
+        </video>
+    </div>*/
+    ?>
     <div class="font16 text" id="text">
         <div id="control">
             <?php if($cams->itemCount){
