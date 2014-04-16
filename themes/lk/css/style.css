@@ -413,12 +413,14 @@ a.user_data{
 
 #archive .items .view{
     display: inline-block;
-    width: 170px;
-    height: 128px;
+    width: 110px;
+    /*height: 50px;*/
     margin-right: 20px;
     margin-bottom: 10px;
-    background: url(images/kadri.png);
+    /*background: url(images/kadri.png);*/
+    background-color: #000000;
     background-size: contain;
+    padding: 10px;
 
     color: #999999;
 }

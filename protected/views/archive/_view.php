@@ -9,25 +9,23 @@
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
 	<br />-->
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('cam_id')); ?>:</b>
+	<!--<b><?php echo CHtml::encode($data->getAttributeLabel('cam_id')); ?>:</b>
 	<?php echo CHtml::encode($data->cam_id); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>
 	<?php echo CHtml::encode($data->type); ?>
-	<br />
+	<br />-->
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('date_start')); ?>:</b>
-	<?php echo CHtml::encode(date("H:i:s",$data->date_start)); ?>
-	<br />
+	<!--<b><?php echo CHtml::encode($data->getAttributeLabel('date_start')); ?>:</b>-->
+	<?php echo CHtml::encode(date("H:i:s",$data->date_start)); ?> -
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('date_end')); ?>:</b>
+	<!--<b><?php echo CHtml::encode($data->getAttributeLabel('date_end')); ?>:</b>-->
 	<?php echo CHtml::encode(date("H:i:s",$data->date_end)); ?>
-	<br />
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('watched')); ?>:</b>
+    <!--<b><?php echo CHtml::encode($data->getAttributeLabel('watched')); ?>:</b>
     <?php echo CHtml::encode($data->watched); ?>
-    <br />
+    <br />-->
 
     <?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('date_rebuild')); ?>:</b>

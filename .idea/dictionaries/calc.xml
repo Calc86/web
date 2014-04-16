@@ -2,6 +2,7 @@
   <dictionary name="calc">
     <words>
       <w>&amp;cid</w>
+      <w>lastsnap</w>
       <w>unixtime</w>
     </words>
   </dictionary>
