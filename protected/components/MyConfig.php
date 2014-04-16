@@ -6,7 +6,8 @@
 class MyConfig extends CComponent
 {
     //const VLC_LIVE_IP = '10.154.28.203';
-    const VLC_LIVE_RPC_PATH = '/rpc/main_rpc.php?token=';
+    //const VLC_LIVE_RPC_PATH = '/rpc/main_rpc.php?token=';
+    const VLC_LIVE_RPC_PATH = '/rpc/native.php?token=';
 
     public function __construct(){
     }

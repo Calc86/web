@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Zend/XmlRpc/Client.php';
+//require_once 'Zend/XmlRpc/Client.php';
 
 /**
  * This is the model class for table "cams".
@@ -234,16 +234,19 @@ class Cam extends CActiveRecord
 
         //$url = 'http://10.154.28.202/rpc/vlc.php?token='.Yii::app()->user->id;
         $url = MyConfig::getLiveRPCUrl(Yii::app()->user->id);
-        $client = new Zend_XmlRpc_Client($url);
-        $rpc = $client->getProxy('rpc');
-        try
-        {
+        /*$client = new Zend_XmlRpc_Client($url);
+        $rpc = $client->getProxy('rpc');*/
+        /*try
+        {*/
             $ret = 0;
             if($on)
-                $ret = $rpc->cam_play($this->id,$type);
+                //$ret = $rpc->cam_play($this->id,$type);
+                $ret = file_get_contents($url."&cid={$this->id}&pref={$type}&func=cam_play");
             else
-                $ret = $rpc->cam_stop($this->id,$type);
-        }
+                //$ret = $rpc->cam_stop($this->id,$type);
+                $ret = file_get_contents($url."&cid={$this->id}&pref={$type}&func=cam_stop");
+            echo $ret;
+        /*}
         catch(Zend_XmlRpc_HttpException $e){    // Ошибки HTTP (404, etc)
             echo "Zend_XmlRpc_HttpException: ";
             echo $e->getCode();
@@ -271,6 +274,6 @@ class Cam extends CActiveRecord
             print_r($response);
             $httpClient = $client->getHttpClient();
             print_r($httpClient);
-        }
+        }*/
     }
 }

@@ -188,14 +188,16 @@ class CamSettings extends CActiveRecord
         parent::afterSave();
 
         $url = MyConfig::getLiveRPCUrl(Yii::app()->user->id);
-        $client = new Zend_XmlRpc_Client($url);
-        $rpc = $client->getProxy('rpc');
+        //$client = new Zend_XmlRpc_Client($url);
+        //$rpc = $client->getProxy('rpc');
         $cid = $this->cam_id;
 
-        try
-        {
-            $rpc->cam_reload($cid);
-        }
+        /*try
+        {*/
+            //$rpc->cam_reload($cid);
+            $ret = file_get_contents($url."&cid={$cid}&func=cam_reload");
+            echo $ret;
+        /*}
         catch(Zend_XmlRpc_HttpException $e){
             echo 'ZHTTP';
             echo $e->getCode();
@@ -232,6 +234,6 @@ class CamSettings extends CActiveRecord
             $httpClient = $client->getHttpClient();
             print_r($httpClient);
             exit();
-        }
+        }*/
     }
 }
