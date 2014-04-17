@@ -196,7 +196,7 @@ class CamSettings extends CActiveRecord
         {*/
             //$rpc->cam_reload($cid);
             $ret = file_get_contents($url."&cid={$cid}&func=cam_reload");
-            echo $ret;
+            //echo $ret;
         /*}
         catch(Zend_XmlRpc_HttpException $e){
             echo 'ZHTTP';
