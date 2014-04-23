@@ -20,6 +20,13 @@ a{
     text-decoration: none;
 }
 
+a.archive{
+    color: #ffffff;
+    background-color: #000000;
+    display: inline-block;
+    padding: 10px;
+}
+
 .font16 {
     font-weight: bold;
     font-size: 16px;
