@@ -18,7 +18,7 @@ foreach($cams->data as $cam)
 {
     $style = ' style="background-image: url('.$this->createUrl("snap",array('id'=>$cam->id)).');"';
 ?>
-    <a style="background-image: url(/img/<?=Yii::app()->user->id?>/<?=$cam->id?>/lastsnap.jpg)" href="<?php echo $this->createUrl("archive/cal",array('cid'=>$cam->id)) ?>" class="kadr normal"<?=$style?>>
+    <a style="background-image: url(<?=MyConfig::getNginxImgUrl($cam->id);?>)" href="<?php echo $this->createUrl("archive/cal",array('cid'=>$cam->id)) ?>" class="kadr normal"<?=$style?>>
         <div class="font16"><?=$cam->name?></div>
     </a>
 <?php

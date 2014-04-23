@@ -186,18 +186,23 @@ class ArchiveController extends Controller
         $model = $this->loadModel($id);
         $file = $model->pathMp4();
         if(!$file) $file = $model->pathAvi();
-        $file = str_replace('/home/vlc/vlc','',$file);
-        $file = str_replace('/home/vlc/web','',$file);
-        return $file;
+        $file = str_replace('/home/vlc/vlc/rec','',$file);
+        $file = str_replace('/home/vlc/web/rec','',$file);
+        //return $file;
+        return MyConfig::getNginxArchiveUrl($file);
     }
 
-    public function actionStream($id){
+    public function getDownloadUrl($id){
         $model = $this->loadModel($id);
         $file = $model->pathMp4();
         if(!$file) $file = $model->pathAvi();
-        $file = str_replace('/home/vlc/vlc','',$file);
-        $file = str_replace('/home/vlc/web','',$file);
-        $this->redirect($file);
+        $size = filesize($file);
+        $file = str_replace('/home/vlc/vlc/rec','',$file);
+        $file = str_replace('/home/vlc/web/rec','',$file);
+
+        //return $file;
+        $id = "$file&size=$size&name=".basename($file);
+        return MyConfig::getNginxArchiveUrl($id, 1);
     }
 
     //Пусть пока будет обычным скачиванем файликов
@@ -225,18 +230,22 @@ class ArchiveController extends Controller
             if (ob_get_level()) {
                 ob_end_clean();
             }
+
             // заставляем браузер показать окно сохранения файла
-            header('Content-Description: File Transfer');
-            //header('Content-Type: application/octet-stream');
-            header('Content-Type: video/mp4');
+            //header('Content-Description: File Transfer');
+            //echo $this->getUrl($id);
+            header('X-Accel-Redirect: ' .  $this->getUrl($id));
+            header('Content-Type: application/octet-stream');
+            //header('Content-Type: video/mp4');
             header('Content-Disposition: attachment; filename=' . basename($file));
-            header('Content-Transfer-Encoding: binary');
+            /*header('Content-Transfer-Encoding: binary');
             header('Expires: 0');
             header('Cache-Control: must-revalidate');
             header('Pragma: public');
-            header('Content-Length: ' . filesize($file));
+            header('Content-Length: ' . filesize($file));*/
             // читаем файл и отправляем его пользователю
-            readfile($file);
+            //header("Location: ".$this->getUrl($id));
+            //readfile($file);
             //exit;
         }
         else

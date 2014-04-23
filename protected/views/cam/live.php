@@ -117,7 +117,7 @@ if(count($cams->data)){
 
         echo '<a'.$style.' href=""></a>';
         ?>
-        <a style="background-image: url(/img/<?=Yii::app()->user->id?>/<?=$cam->id?>/lastsnap.jpg)" href="<?=$url?>" class="kadr small shadow<?=$on;?>"<?=$style?>>
+        <a style="background-image: url(<?=MyConfig::getNginxImgUrl($cam->id);?>)" href="<?=$url?>" class="kadr small shadow<?=$on;?>"<?=$style?>>
             <div class="font16">
                 <?=$cam->name?>
             </div>

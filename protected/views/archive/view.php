@@ -32,9 +32,11 @@ $frame = new VideoFrame();
 
 //echo $frame->view($model->file);
 //http://10.154.28.208/rec/1/2014-03-16/17_22_47_UID_1__CID_9_rec.avi
+$url = '';
 if($model->pathMp4()){
     //echo $frame->view($this->createUrl('stream',array('id'=>$model->id)));
-    echo $frame->view($this->getUrl($model->id));
+    $url = $this->getUrl($model->id);
+    echo $frame->view($url);
 }
 else{
     if(!$model->pathAvi()){
@@ -43,12 +45,15 @@ else{
     else{
         echo 'Поток не является h264, просмотр на мобильных устройствах не возможен<br>';
         $frame = new CamFrame(new CamSettings());
-        echo $frame->vlc2_plugin($this->getFile($model->pathAvi()));
+        $url = $this->getUrl($model->id);
+        //echo $frame->vlc2_plugin($this->getFile($model->pathAvi()));
+        echo $frame->vlc2_plugin($url);
     }
 }
-
-echo CHtml::link("Скачать",$this->createUrl("file",array('id'=>$model->id)));
-
+echo '<br>';
+//if($url!='') echo CHtml::link("Скачать",$this->getDownloadUrl($model->id), array('class'=>'archive'));
+//if($url!='') echo CHtml::link("Скачать",$url, array('class'=>'archive'));
+if($url!='') echo CHtml::link("Скачать",$this->createUrl('file',array('id'=>$model->id)), array('class'=>'archive'));
 ?>
 
 

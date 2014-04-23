@@ -27,9 +27,10 @@ class CamFrame extends CComponent
     }
 
     public function src_srv() {
-        return $this->url(
+        return MyConfig::getNginxVlcStream($this->cam->cam_id);
+        /*return $this->url(
             $this->get_srv_proto(), $this->get_srv_host(), $this->getStreamPort(), $this->cam->stream_path.'.mp4'
-        );
+        );*/
     }
 
     public function src_source() {
@@ -59,6 +60,9 @@ class CamFrame extends CComponent
             default:
                 $source = $this->src_srv_rtsp();
                 break;
+            case 'motion':
+                $source = MyConfig::getNginxMotionStream($this->cam->cam_id);
+                break;
             case 'srv':
             default:
                 $source = $this->src_srv();
@@ -72,6 +76,8 @@ class CamFrame extends CComponent
                 return $this->jpg_plugin($source);
             case 'qt':
                 return $this->qt_plugin($source);
+                break;
+            case 'img':
                 break;
             /*case 'vlc':
                 return $this->vlc_plugin($source);*/
@@ -156,6 +162,10 @@ class CamFrame extends CComponent
         </OBJECT> ';
         return $ret;
     }*/
+
+    protected function img_plugin($source) {
+        return '<img src="'.$source.'">';
+    }
 
     protected function qt_plugin($source) {
         $ret = '';
