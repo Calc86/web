@@ -43,7 +43,8 @@ class MyConfig extends CComponent
         $secure = MyConfig::getNginxSecureString($phrase, $pattern, $expire, $port);
         $hash = MyConfig::getNginxSecureHash($secure);
 
-        $url = "http://{ip}/$phrase/?k={hash}&e={e}&id={id}";
+        //$url = "http://{ip}/$phrase/?k={hash}&e={e}&id={id}";
+        $url = "/$phrase/?k={hash}&e={e}&id={id}";
         if($short)
             $url = "/$phrase/?k={hash}&e={e}&id={id}";
 
