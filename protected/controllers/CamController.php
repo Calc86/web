@@ -219,7 +219,7 @@ class CamController extends Controller
 
     public function actionLive($index=0, $src = 'srv', $plugin = 'vlc')
     {
-        $this->render('live',array('index'=>$index, 'src'=>$src, 'pl'=>$plugin));
+        $this->render('live',array('index'=>$index, 'src'=>$src, 'plugin'=>$plugin));
     }
 
 	/**

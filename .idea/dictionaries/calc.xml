@@ -3,6 +3,7 @@
     <words>
       <w>&amp;cid</w>
       <w>addr</w>
+      <w>descr</w>
       <w>lastsnap</w>
       <w>unixtime</w>
     </words>
