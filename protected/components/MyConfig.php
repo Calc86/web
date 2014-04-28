@@ -7,7 +7,7 @@ class MyConfig extends CComponent
 {
     //const VLC_LIVE_IP = '10.154.28.203';
     //const VLC_LIVE_RPC_PATH = '/rpc/main_rpc.php?token=';
-    const VLC_LIVE_RPC_PATH = '/rpc/native.php?token=';
+    const VLC_LIVE_RPC_PATH = '/out/rpc/native.php?token=';
     const NGINX_SECURE_LINK_HASH = '{phrase}{expire}{http_port}';
     //const NGINX_SECURE_LINK_HASH = 'dvr{expire}{http_port}';
     const NGINX_SECURE_LINK_EXPIRE = 30;    //30 секунд
