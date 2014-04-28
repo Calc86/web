@@ -78,6 +78,7 @@ class CamFrame extends CComponent
                 return $this->qt_plugin($source);
                 break;
             case 'img':
+                return $this->img_plugin($source);
                 break;
             /*case 'vlc':
                 return $this->vlc_plugin($source);*/
@@ -164,7 +165,7 @@ class CamFrame extends CComponent
     }*/
 
     protected function img_plugin($source) {
-        return '<img src="'.$source.'">';
+        return '<img width="'.$this->width.'" src="'.$source.'">';
     }
 
     protected function qt_plugin($source) {
