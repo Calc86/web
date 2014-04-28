@@ -63,7 +63,7 @@
                 <?php $main = Pages::main_block();?>
                 <h1><?=$main->title;?></h1>
                 <P><?=$main->text;?></P>
-                <p class="button2"><a href='#' class='button2'>Прочитать</a></p>
+                <p class="button2"><a href='<?=$main->descr;?>' class='button2'>Прочитать</a></p>
             </div>
             <div class="span-18 append-bottom last cam">
                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/css/images/cam.png" />

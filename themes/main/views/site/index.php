@@ -21,7 +21,7 @@ $this->layout = 'column0';
                 <p>
                     <?=$main['main_col1']->text;?>
                 </p>
-                <p class="button"><a href='#' class='button'>Подробнее</a></p>
+                <p class="button"><a href='<?=$main['main_col1']->descr;?>' class='button'>Подробнее</a></p>
             </div>
         </div>
         <div class="span-7 last">
@@ -30,7 +30,7 @@ $this->layout = 'column0';
                 <p>
                     <?=$main['main_col2']->text;?>
                 </p>
-                <p class="button"><a href='#' class='button'>Подробнее</a></p>
+                <p class="button"><a href='<?=$main['main_col2']->descr;?>' class='button'>Подробнее</a></p>
             </div>
         </div>
     </div>
