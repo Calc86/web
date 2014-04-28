@@ -1,5 +1,9 @@
 <?php
-/* @var $this CamController */
+/* @var $this CamController
+ * @var $index
+ * @var $src
+ * @var $pl
+ */
 
 $this->breadcrumbs=array(
 	'Cam'=>array('/cam'),
@@ -73,7 +77,7 @@ if(count($cams->data)){
             if($cams->itemCount!=0){
                 $cs = CamSettings::model()->findByAttributes(array('cam_id'=>$cams->data[$index]->id));
                 $frame = new CamFrame($cs);
-                echo $frame->live();
+                echo $frame->live($src, $pl);
             }
         ?>
     </div>
@@ -92,6 +96,14 @@ if(count($cams->data)){
                 $rec = $cam->rec ? ' on' : '';
                 $mtn = $cam->mtn ? ' on' : '';
                 ?>
+
+                <div style="background-color: white;">
+                    <a href="<?=$this->createUrl('', array('index'=>$index))?>">dvr</a>
+                    motion
+                    (<a href="<?=$this->createUrl('', array('index'=>$index, 'src'=>'motion'))?>">std</a>,
+                    <a href="<?=$this->createUrl('', array('index'=>$index, 'src'=>'motion', 'pl'=>'img'))?>">img</a>)
+                </div>
+
                 <div class="button first cam" data-href="<?=$this->createUrl("update",array('id'=>$cam->id))?>">&nbsp;</div>
                 <div class="button settings" data-href="<?=$this->createUrl("camSettings/update",array('cam_id'=>$cams->data[$index]->id))?>">&nbsp;</div>
                 <div class="button play<?=$live?>">&nbsp;</div>
