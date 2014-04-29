@@ -68,6 +68,10 @@ class MyConfig extends CComponent
         return MyConfig::getNginxSecureUrl(MyConfig::getVlcLiveIP(), 'motion' ,MyConfig::NGINX_SECURE_LINK_HASH, $id + MyConfig::MOTION_STREAM_PORT);
     }
 
+    public static function getNginxMotionSnap($id) {
+        return MyConfig::getNginxSecureUrl(MyConfig::getVlcLiveIP(), 'm_snap' ,MyConfig::NGINX_SECURE_LINK_HASH, $id + MyConfig::MOTION_STREAM_PORT);
+    }
+
     public static function getNginxImgUrl($id) {
         return MyConfig::getNginxSecureUrl($_SERVER['SERVER_ADDR'], 'snapshot' ,MyConfig::NGINX_SECURE_LINK_HASH, "/".Yii::app()->user->id."/".$id."/lastsnap.jpg", true);
     }

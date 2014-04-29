@@ -69,11 +69,10 @@ class CamController extends Controller
 		));
 	}
 
-    public function actionSnap($id)
+    public function actionSnap()
     {
-        $this->renderPartial('_snap',array(
-            'model'=>$this->loadModel($id),
-        ));
+        //$this->renderPartial('_snap',array());
+        $this->render('snap');
     }
 
     public function actionAjax($id,$type){

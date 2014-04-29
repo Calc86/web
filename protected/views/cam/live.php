@@ -74,6 +74,7 @@ if(count($cams->data)){
 <div class="column1">
     <div id="live" class="shadow font16">
         <?php
+            Yii::app()->session['cam_id'] = $cams->data[$index]->id;
             if($cams->itemCount!=0){
                 $cs = CamSettings::model()->findByAttributes(array('cam_id'=>$cams->data[$index]->id));
                 $frame = new CamFrame($cs);
@@ -100,8 +101,13 @@ if(count($cams->data)){
                 <div style="background-color: white;">
                     <a href="<?=$this->createUrl('', array('index'=>$index))?>">dvr</a>
                     motion
-                    (<a href="<?=$this->createUrl('', array('index'=>$index, 'src'=>'motion'))?>">std</a>,
-                    <a href="<?=$this->createUrl('', array('index'=>$index, 'src'=>'motion', 'plugin'=>'img'))?>">img</a>)
+                    (
+                    <a href="<?=$this->createUrl('', array('index'=>$index, 'src'=>'motion'))?>">std</a>,
+                    <a href="<?=$this->createUrl('', array('index'=>$index, 'src'=>'motion', 'plugin'=>'img'))?>">img</a>
+                    <a href="<?=$this->createUrl('', array('index'=>$index, 'src'=>'motion', 'plugin'=>'cambozola'))?>">cambozola</a>
+                    <a href="<?=$this->createUrl('', array('index'=>$index, 'src'=>'motion', 'plugin'=>'axis'))?>">axis</a>
+                    <a target="_blank" href="<?=$this->createUrl('snap')?>">snap</a>
+                    )
                 </div>
 
                 <div class="button first cam" data-href="<?=$this->createUrl("update",array('id'=>$cam->id))?>">&nbsp;</div>
@@ -127,7 +133,7 @@ if(count($cams->data)){
         $url = $this->createUrl('live',array('index'=>$i));
         $on = $index==$i ? ' on' : '';
 
-        echo '<a'.$style.' href=""></a>';
+        //echo '<a'.$style.' href=""></a>';
         ?>
         <a style="background-image: url(<?=MyConfig::getNginxImgUrl($cam->id);?>)" href="<?=$url?>" class="kadr small shadow<?=$on;?>"<?=$style?>>
             <div class="font16">

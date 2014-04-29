@@ -36,7 +36,10 @@ $url = '';
 if($model->pathMp4()){
     //echo $frame->view($this->createUrl('stream',array('id'=>$model->id)));
     $url = $this->getUrl($model->id);
-    echo $frame->view($url);
+    //echo $frame->view($url);
+    $frame = new CamFrame(new CamSettings());
+    //echo $frame->fpf_plugin($url);
+    echo $frame->fp5_plugin($url);
 }
 else{
     if(!$model->pathAvi()){

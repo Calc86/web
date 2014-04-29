@@ -52,6 +52,7 @@ class CamFrame extends CComponent
 
     public function live($src = 'srv', $plugin = 'vlc') {
         $source = '';
+
         switch ($src) {
             case 'source':
                 $source = $this->src_source();
@@ -62,6 +63,9 @@ class CamFrame extends CComponent
                 break;
             case 'motion':
                 $source = MyConfig::getNginxMotionStream($this->cam->cam_id);
+                break;
+            case 'm_snap':
+                $source = Yii::app()->session['cam_id'];
                 break;
             case 'srv':
             default:
@@ -79,6 +83,21 @@ class CamFrame extends CComponent
                 break;
             case 'img':
                 return $this->img_plugin($source);
+                break;
+            case 'snap':
+                return $this->snap_plugin($source);
+                break;
+            case 'cambozola':
+                return $this->cambozola_plugin($source);
+                break;
+            case 'axis':
+                return $this->axis_plugin($source);
+                break;
+            case 'fpf':
+                return $this->fpf_plugin($source);
+                break;
+            case 'fp5':
+                return $this->fp5_plugin($source);
                 break;
             /*case 'vlc':
                 return $this->vlc_plugin($source);*/
@@ -142,30 +161,87 @@ class CamFrame extends CComponent
         return $ret;
     }
 
-    /* protected function qt_plugin($source) {
-      $ret = '';
-      $ret.= '<embed id="qt_'.$this->id.'" controller="true" autoplay="true" src="qwer1.mp4"
-      qtsrc="'.$source.'" type="video/quicktime" scale="ToFit" height="'.$this->h.'" width="'.$this->w.'">';
-
-      return $ret;
-      } */
-
-    /*protected function qt_plugin($source) {
-        $ret = '';
-        $ret.= '<OBJECT classid=\'clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B\' width="320" height="240" codebase=\'http://www.apple.com/qtactivex/qtplugin.cab\'>
-            <param name=\'src\' value="' . $source . '">
-            <param name=\'autoplay\' value="true">
-            <param name=\'controller\' value="false">
-            <param name=\'loop\' value="false">
-            <EMBED src="' . $source . '" width="320" height="240" autoplay="true"
-            controller="true" loop="false" bgcolor="#000000" pluginspage=\'http://www.apple.com/quicktime/download/\'>
-            </EMBED>
-        </OBJECT> ';
-        return $ret;
-    }*/
-
     protected function img_plugin($source) {
-        return '<img width="'.$this->width.'" src="'.$source.'">';
+        return '<img id="video_frame" width="'.$this->width.'" src="'.$source.'">';
+    }
+
+    protected function cambozola_plugin($source) {
+        return '<applet code="com.charliemouse.cambozola.Viewer" archive="/cambozola.jar" width="704" height="576">
+            <param name="url" value="'.$source.'">
+            </applet>';
+    }
+
+    protected function snap_plugin($id) {
+        return '
+            <script>
+                function reload(){
+                    location.reload();
+                }
+            </script>
+            <a id="frame" onClick="reload()" href="#"><img src="'.MyConfig::getNginxMotionSnap($id).'"></a>
+        ';
+    }
+
+    protected function axis_plugin($source){
+        return '
+            <object id="Player" width="450" height="288" border="0" classid="CLSID:745395C8-D0E1-4227-8586-624CA9A10A8D" codebase="/AMC.cab">
+              <param name="Height" value="450">
+              <param name="AutoStart" value="1">
+              <param name="UIMode" value="none">
+              <param name="MediaType" value="mjpeg-unicast">
+              <param name="NetworkTimeout" value="5000">
+              <param name="MediaUsername" value="webcam">
+              <param name="MediaPassword" value="webcam">
+              <param name="MediaURL" value="'.$source.'">
+            </object>
+        ';
+    }
+
+    /**
+     * @param $source
+     * @return string
+     */
+    public function fp5_plugin($source){
+        $baseUrl = Yii::app()->baseUrl;
+        $cs = Yii::app()->clientScript;
+        /* @var $cs CClientScript */
+        $path = Yii::app()->baseUrl."/flowplayer/html5";
+
+        //$cs->registerCssFile("$path/skin/minimalist.css");
+        $cs->registerCssFile("$path/skin/playful.css");
+
+        $cs->registerScriptFile("$path/flowplayer.min.js");
+
+        return '
+        <div class="flowplayer">
+           <video>
+              <source type="video/mp4"  src="'.$source.'">
+           </video>
+        </div>
+        ';
+    }
+
+    /**
+     * @param $source
+     * @return string
+     */
+    public function fpf_plugin($source){
+        $source = 'http://10.154.28.205'.$source;
+        $baseUrl = Yii::app()->baseUrl;
+        $cs = Yii::app()->clientScript;
+        /* @var $cs CClientScript */
+        $path = Yii::app()->baseUrl."/flowplayer/flash";
+        $cs->registerScriptFile("$path/flowplayer-3.2.13.min.js");
+
+        $cs->registerScript('flowplayer', '
+             flowplayer("player", "'.$path.'/flowplayer-3.2.18.swf");
+        ');
+
+        return '
+            <a href="'.$source.'"
+                style="display:block;width:'.$this->width.'px;height:'.$this->height.'px;"
+                id="player">
+            </a>';
     }
 
     protected function qt_plugin($source) {
