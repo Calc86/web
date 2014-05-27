@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Zend/XmlRpc/Client.php';
+//require_once 'Zend/XmlRpc/Client.php';
 
 /**
  * This is the model class for table "cam_settings".
@@ -27,6 +27,7 @@ require_once 'Zend/XmlRpc/Client.php';
  * @property integer $stop_height
  * @property integer $stream_port
  * @property integer $stream_path
+ * @property Cam $cam
  */
 class CamSettings extends CActiveRecord
 {
@@ -187,53 +188,15 @@ class CamSettings extends CActiveRecord
     protected function afterSave(){
         parent::afterSave();
 
-        $url = MyConfig::getLiveRPCUrl(Yii::app()->user->id);
+        /** @var CWebApplication $app */
+        $app = Yii::app();
+
+        $url = MyConfig::getLiveRPCUrl($app->user->id);
         //$client = new Zend_XmlRpc_Client($url);
         //$rpc = $client->getProxy('rpc');
         $cid = $this->cam_id;
 
-        /*try
-        {*/
-            //$rpc->cam_reload($cid);
-            $ret = file_get_contents($url."&cid={$cid}&func=cam_reload");
-            //echo $ret;
-        /*}
-        catch(Zend_XmlRpc_HttpException $e){
-            echo 'ZHTTP';
-            echo $e->getCode();
-            echo ': ';
-            echo $e->getMessage();
-            echo '<pre>';
-            print_r($client->getLastResponse());
-        }
-        catch (Zend_XmlRpc_FaultException $e) {
-            echo 'ZFE';
-            echo $e->getCode();
-            echo ': ';
-            echo $e->getMessage();
-            echo '<pre>';
-            print_r($client->getLastResponse());
-        }
-        catch(Zend_XmlRpc_Client_FaultException $e){
-            echo 'ZCFE';
-            echo $e->getCode();
-            echo ': ';
-            echo $e->getMessage();
-            echo '<pre>';
-            print_r($client->getLastResponse());
-            exit();
-        }
-        catch (Exception $e) {
-            echo 'E';
-            echo $e->getCode();
-            echo ': ';
-            echo $e->getMessage();
-            $response = $client->getLastResponse();
-            echo '<pre>';
-            print_r($response);
-            $httpClient = $client->getHttpClient();
-            print_r($httpClient);
-            exit();
-        }*/
+        file_get_contents($url."&cid={$cid}&func=cam_reload");
+
     }
 }

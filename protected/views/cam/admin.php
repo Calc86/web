@@ -12,7 +12,9 @@ $this->menu=array(
 	array('label'=>'Create Cam', 'url'=>array('create')),
 );
 
-Yii::app()->clientScript->registerScript('search', "
+/** @var CWebApplication $app */
+$app = Yii::app();
+$app->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
 	return false;

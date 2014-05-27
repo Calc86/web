@@ -1,4 +1,5 @@
 <?php /* @var $this Controller */ ?>
+<?php /* @var $content string */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
 <div id="content" class="white_box">
     <!--content -->

@@ -1,4 +1,5 @@
 <?php /* @var $this Controller */ ?>
+<?php /* @var $content string */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
 
 <table id="layout">
@@ -23,8 +24,8 @@
                         <a href="<?=$this->createUrl('/site/logout')?>">logout</a>
                         <a href="<?=$this->createUrl("/cam")?>" class="img">
                             &nbsp;<br>
-                            UserID:<?=Yii::app()->user->id?><br>
-                            UserName:<?=Yii::app()->user->name?>
+                            UserID:<?=MyYii::app()->user->id?><br>
+                            UserName:<?=MyYii::app()->user->name?>
                         </a>
                     </div>
                     <div style="height: 90px;" class="">

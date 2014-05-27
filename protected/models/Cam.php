@@ -95,13 +95,14 @@ class Cam extends CActiveRecord
      */
     public function search()
     {
-        // @todo Please modify the following code to remove attributes that should not be searched.
+        /** @var CWebApplication $app */
+        $app = Yii::app();
 
         $criteria=new CDbCriteria;
 
         //$criteria->compare('id',$this->id);
         //$criteria->compare('zone_id',$this->zone_id);
-        $criteria->compare('user_id',Yii::app()->user->id);
+        $criteria->compare('user_id',$app->user->id);
         //$criteria->compare('name',$this->name,true);
         //$criteria->compare('order',$this->order);
         //$criteria->compare('type_id',$this->type_id);
@@ -127,7 +128,9 @@ class Cam extends CActiveRecord
 
     protected function beforeSave(){
         if(parent::beforeSave()){
-            $this->user_id = Yii::app()->user->id;
+            /** @var CWebApplication $app */
+            $app = Yii::app();
+            $this->user_id = $app->user->id;
             return true;
         }
         else
@@ -151,7 +154,7 @@ class Cam extends CActiveRecord
         }
     }
 
-    public function snapshot(){
+    /*public function snapshot(){
         $result = '';
         $rand = rand();
         $tmp = "/tmp/bb";
@@ -160,53 +163,7 @@ class Cam extends CActiveRecord
         $dir = $tmp;
         $cookie = "$dir/$this->id.$rand.txt"; //cookie
         return '';
-        //return buffer with image
-        /*switch ($this->cs->stop_auth){
-            //HTTP авторизация, обычно на камерах DLink
-            case 'http':
-                $url = $this->cs->stop_proto.'://'.$this->ip.':'.$this->cs->stop_port.'/'.$this->cs->stop_path;
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $url);
-                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1); // ждем 1 секунду
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_USERPWD, "$this->user:$this->pass");
-                $result = curl_exec($ch);
-                curl_close($ch);
-                return $result;
-            case 'ubqt':
-                $url = "{$this->cs->stop_proto}://$this->ip:{$this->cs->stop_port}/login.cgi";
-
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL,$url);
-                curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, 1); // ждем 1 секунду
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-                curl_setopt ($ch, CURLOPT_COOKIEFILE, $cookie);
-                curl_setopt ($ch, CURLOPT_COOKIEJAR, $cookie);
-                curl_exec($ch); // get cookie
-
-                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);    //-LH
-                curl_setopt($ch, CURLOPT_HEADER, false);
-                curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-                    'username' => $this->user,  //-F username=$this->user
-                    'password' => $this->pass,  //-F password=$this->pass
-                    'uri'=>$this->cs->stop_path,//uri={$this->cs->stop_path}
-                ));
-                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:')); //'Expect:'
-
-                //curl -o $jpg -LH 'Expect:' -b $ck -F username=$this->user -F password=$this->pass -F uri={$this->cs->stop_path} $url
-                // -o нам не нужен
-                $result =curl_exec($ch);
-                curl_close($ch);
-                return $result;
-            default:
-                $url = "{$this->cs->stop_proto}://{$this->ip}/{$this->cs->stop_path}";
-                $result = file_get_contents($url);
-                return $result;
-                break;
-        }*/
-    }
+    }*/
 
     public function toggle(){
         $type = $this->getScenario();
@@ -233,7 +190,7 @@ class Cam extends CActiveRecord
         //$value = $this->$type;
 
         //$url = 'http://10.154.28.202/rpc/vlc.php?token='.Yii::app()->user->id;
-        $url = MyConfig::getLiveRPCUrl(Yii::app()->user->id);
+        $url = MyConfig::getLiveRPCUrl(MyYii::app()->user->id);
         /*$client = new Zend_XmlRpc_Client($url);
         $rpc = $client->getProxy('rpc');*/
         /*try

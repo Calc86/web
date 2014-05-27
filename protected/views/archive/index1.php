@@ -15,7 +15,9 @@ $this->menu=array(
 	array('label'=>'Create Archive', 'url'=>array('create')),
 );
 
-Yii::app()->clientScript->registerScript('search', "
+/** @var CWebApplication $app */
+$app = Yii::app();
+$app->clientScript->registerScript('search', "
 $('.search-form form').submit(function(){
 	/*$('#archive-list').yiiListView('update', {
 		data: $(this).serialize()

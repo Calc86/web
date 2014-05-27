@@ -12,7 +12,10 @@ $this->menu=array(
 	array('label'=>'Create Zone', 'url'=>array('create')),
 );
 
-Yii::app()->clientScript->registerScript('search', "
+/** @var CWebApplication $app */
+$app = Yii::app();
+$app->theme = 'lk';
+$app->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
 	return false;

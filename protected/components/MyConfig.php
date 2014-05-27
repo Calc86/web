@@ -19,7 +19,9 @@ class MyConfig extends CComponent
 
     public static function getLiveRPCUrl($token){
         //return 'http://'.MyConfig::VLC_LIVE_IP.MyConfig::VLC_LIVE_RPC_PATH.$token;
-        return 'http://'.Yii::app()->params->vlcLiveHost.MyConfig::VLC_LIVE_RPC_PATH.$token;
+        /** @var CWebApplication $app */
+        $app = Yii::app();
+        return 'http://'.$app->params->vlcLiveHost.MyConfig::VLC_LIVE_RPC_PATH.$token;
     }
 
     public static function getVlcLiveIP(){
@@ -73,7 +75,9 @@ class MyConfig extends CComponent
     }
 
     public static function getNginxImgUrl($id) {
-        return MyConfig::getNginxSecureUrl($_SERVER['SERVER_ADDR'], 'snapshot' ,MyConfig::NGINX_SECURE_LINK_HASH, "/".Yii::app()->user->id."/".$id."/lastsnap.jpg", true);
+        /** @var CWebApplication $app */
+        $app = Yii::app();
+        return MyConfig::getNginxSecureUrl($_SERVER['SERVER_ADDR'], 'snapshot' ,MyConfig::NGINX_SECURE_LINK_HASH, "/".$app->user->id."/".$id."/lastsnap.jpg", true);
     }
 
     public static function getNginxArchiveUrl($id, $download = 0) {

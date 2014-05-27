@@ -12,7 +12,9 @@ $this->menu=array(
 	array('label'=>'Create Archive', 'url'=>array('create')),
 );
 
-Yii::app()->clientScript->registerScript('search', "
+/** @var CWebApplication $app */
+$app = Yii::app();
+$app->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
 	return false;
@@ -42,7 +44,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'archive-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$model->search(1,1,1),
 	'filter'=>$model,
 	'columns'=>array(
 		'id',

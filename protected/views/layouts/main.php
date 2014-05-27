@@ -1,4 +1,5 @@
 <?php /* @var $this Controller */ ?>
+<?php /* @var $content string */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -32,8 +33,8 @@
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>MyYii::app()->user->isGuest),
+				array('label'=>'Logout ('.MyYii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!MyYii::app()->user->isGuest)
 			),
 		)); ?>
 	</div><!-- mainmenu -->

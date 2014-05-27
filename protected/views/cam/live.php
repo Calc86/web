@@ -22,7 +22,9 @@ if(count($cams->data)){
     $rec_url = $this->createUrl("ajax",array("id"=>$cam->id,'type'=>'rec'));
     $mtn_url = $this->createUrl("ajax",array("id"=>$cam->id,'type'=>'mtn'));
 
-    Yii::app()->clientScript->registerScript('cam', "
+    /** @var CWebApplication $app */
+    $app = Yii::app();
+    $app->clientScript->registerScript('cam', "
         var live_url='$live_url';
         var rec_url='$rec_url';
         var mtn_url='$mtn_url';
@@ -74,8 +76,11 @@ if(count($cams->data)){
 <div class="column1">
     <div id="live" class="shadow font16">
         <?php
-            Yii::app()->session['cam_id'] = $cams->data[$index]->id;
+            /** @var CWebApplication $app */
+            $app = Yii::app();
+            $app->session['cam_id'] = $cams->data[$index]->id;
             if($cams->itemCount!=0){
+                /** @var CamSettings $cs */
                 $cs = CamSettings::model()->findByAttributes(array('cam_id'=>$cams->data[$index]->id));
                 $frame = new CamFrame($cs);
                 echo $frame->live($src, $plugin);

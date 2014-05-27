@@ -12,10 +12,15 @@ class CamController extends Controller
     public $cr_zones;
 
     public function init(){
-        Yii::app()->theme = 'lk';
+
+        /** @var CWebApplication $app */
+        $app = Yii::app();
+        $app->theme = 'lk';
 
         $cr_zones = new CDbCriteria();
-        $cr_zones->addCondition(array('user_id'=>Yii::app()->user->id));
+        /** @var CWebApplication $app */
+        $app = Yii::app();
+        $cr_zones->addCondition(array('user_id'=>$app->user->id));
         $cr_zones->addCondition(array('user_id'=>0),'OR');
     }
 
@@ -76,6 +81,7 @@ class CamController extends Controller
     }
 
     public function actionAjax($id,$type){
+        /** @var Cam $model */
         $model = Cam::model()->findByPk($id);
         $model->setScenario($type);
         echo $model->getScenario().' ';

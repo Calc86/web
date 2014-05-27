@@ -11,11 +11,13 @@ $cams = Cam::model()->search();
 
 //Yii::app()->clientScript->registerScript
 
-$cs = Yii::app()->clientScript;
-/* @var $cs CClientScript*/
+/** @var CWebApplication $app */
+$app = Yii::app();
+$cs = $app->clientScript;
+
 $cs->registerCoreScript( 'jquery.ui' );
 $cs->registerCssFile(
-    Yii::app()->clientScript->getCoreScriptUrl().
+    $app->clientScript->getCoreScriptUrl().
     '/jui/css/base/jquery-ui.css'
 );
 

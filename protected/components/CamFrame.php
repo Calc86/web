@@ -68,7 +68,9 @@ class CamFrame extends CComponent
                 $source = MyConfig::getNginxMotionStream($this->cam->cam_id);
                 break;
             case 'm_snap':
-                $source = Yii::app()->session['cam_id'];
+                /** @var CWebApplication $app */
+                $app = Yii::app();
+                $source = $app->session['cam_id'];
                 break;
             case 'srv':
             default:
@@ -112,7 +114,7 @@ class CamFrame extends CComponent
 
     protected function container($plugin) {
         $ret = '';
-        $ret.= '<div style="display: inline-block; border: 0px solid black; width: ' . ($this->w + 10) . 'px;">';
+        $ret.= '<div style="display: inline-block; border: 0px solid black; width: ' . ($this->width + 10) . 'px;">';
         //echo '<h5>'.$row2['cam_name'].'</h5>';
         $ret.= '<b>' . $this->name . '</b>';
         $ret.= '<center>';
@@ -208,10 +210,10 @@ class CamFrame extends CComponent
         //$source = 'http://10.154.28.203/lhttp/1/stream-1.m3u8';
         $source = 'http://10.154.28.203:9008/path.mp4';
 
-        $baseUrl = Yii::app()->baseUrl;
-        $cs = Yii::app()->clientScript;
+        $baseUrl = MyYii::app()->baseUrl;
+        $cs = MyYii::app()->clientScript;
         /* @var $cs CClientScript */
-        $path = Yii::app()->baseUrl."/flowplayer/html5";
+        $path = MyYii::app()->baseUrl."/flowplayer/html5";
 
         //$cs->registerCssFile("$path/skin/minimalist.css");
         $cs->registerCssFile("$path/skin/playful.css");
@@ -239,7 +241,7 @@ class CamFrame extends CComponent
         $source = 'http://10.154.28.191:13002/1.flv';
         $source = 'http://10.154.28.203:9008/path.mp4';
         $baseUrl = Yii::app()->baseUrl;
-        $cs = Yii::app()->clientScript;
+        $cs = MyYii::app()->clientScript;
         /* @var $cs CClientScript */
         $path = Yii::app()->baseUrl."/flowplayer/flash";
         $cs->registerScriptFile("$path/flowplayer-3.2.13.min.js");

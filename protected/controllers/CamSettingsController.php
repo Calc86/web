@@ -3,7 +3,9 @@
 class CamSettingsController extends Controller
 {
     public function init(){
-        Yii::app()->theme = 'lk';
+        /** @var CWebApplication $app */
+        $app = Yii::app();
+        $app->theme = 'lk';
     }
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -85,6 +87,7 @@ class CamSettingsController extends Controller
 
 	public function actionUpdate($cam_id)
 	{
+        /** @var CamSettings $s */
         $s = CamSettings::model()->findByAttributes(array('cam_id'=>$cam_id));
 		$model=$this->loadModel($s->id);
 

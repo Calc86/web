@@ -2,13 +2,72 @@
   <dictionary name="calc">
     <words>
       <w>&amp;cid</w>
+      <w>abddc</w>
+      <w>accel</w>
       <w>addr</w>
+      <w>afbbccfa</w>
+      <w>allowfullscreen</w>
+      <w>autoloading</w>
+      <w>autoplay</w>
+      <w>backgroundcolor</w>
+      <w>bbpass</w>
+      <w>bgcolor</w>
+      <w>blueprintcss</w>
       <w>cambozola</w>
+      <w>cfcdaa</w>
       <w>charliemouse</w>
+      <w>classid</w>
+      <w>clsid</w>
+      <w>dbname</w>
       <w>descr</w>
+      <w>endlocal</w>
+      <w>fdad</w>
+      <w>fflags</w>
+      <w>filesize</w>
       <w>flowplayer</w>
+      <w>genpts</w>
+      <w>httpstreaming</w>
+      <w>httpstreaminghls</w>
+      <w>inputid</w>
+      <w>ispy</w>
+      <w>kadri</w>
+      <w>kioskmode</w>
       <w>lastsnap</w>
+      <w>maxlength</w>
+      <w>mediaelement</w>
+      <w>mediaelementplayer</w>
+      <w>mkdir</w>
+      <w>notif</w>
+      <w>persdata</w>
+      <w>pluginspage</w>
+      <w>portlet</w>
+      <w>preload</w>
+      <w>preloading</w>
+      <w>prozr</w>
+      <w>qiang</w>
+      <w>qtactivex</w>
+      <w>qtplugin</w>
+      <w>qtrtsp</w>
+      <w>qtsrc</w>
+      <w>quicktime</w>
+      <w>qwertyui</w>
+      <w>readfile</w>
+      <w>revalidate</w>
+      <w>runman</w>
+      <w>rvocx</w>
+      <w>setlocal</w>
+      <w>showlogo</w>
+      <w>sprintf</w>
+      <w>svbb</w>
+      <w>tarifs</w>
+      <w>testdrive</w>
+      <w>unicast</w>
       <w>unixtime</w>
+      <w>valign</w>
+      <w>videolan</w>
+      <w>webcam</w>
+      <w>yiic</w>
+      <w>yiiframework</w>
     </words>
   </dictionary>
 </component>

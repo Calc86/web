@@ -119,7 +119,7 @@ class Pages extends CActiveRecord
 
     protected function beforeSave(){
         if(parent::beforeSave()){
-            if($this->IsNewRecord)
+            if($this->getIsNewRecord())
                 $this->dtc = time();
             else
                 $this->dte = time();
@@ -128,6 +128,9 @@ class Pages extends CActiveRecord
         else return false;
     }
 
+    /**
+     * @return Pages
+     */
     public static function main_block(){
         $criteria = new CDbCriteria();
         //$criteria->limit = 1;

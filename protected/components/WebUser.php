@@ -22,6 +22,9 @@ class WebUser extends CWebUser {
         }
     }
 
+    /**
+     * @return User|null
+     */
     private function getModel(){
         if (!$this->isGuest && $this->model === null){
             $this->model = User::model()->findByPk($this->id, array('select' => 'roles'));

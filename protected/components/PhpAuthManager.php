@@ -16,17 +16,20 @@ class PhpAuthManager extends CPhpAuthManager{
         parent::init();
 
         // Для гостей у нас и так роль по умолчанию guest.
-        if(!Yii::app()->user->isGuest){
+        /** @var WebUser $user */
+        $user = MyYii::app()->user;
+        if(!$user->isGuest){
             // Связываем роль, заданную в БД с идентификатором пользователя,
             // возвращаемым UserIdentity.getId().
             //$this->assign(Yii::app()->user->role, Yii::app()->user->id);
 
             $existingRoles = $this->getRoles();
 
-            if (Yii::app()->user->roles) {
-                foreach (Yii::app()->user->roles as $roles) {
+            //todo разобраться с этим
+            if ($user->roles) {
+                foreach ($user->roles as $roles) {
                     if ($existingRoles[$roles]) {
-                        $this->assign($roles, Yii::app()->user->id);
+                        $this->assign($roles, $user->id);
                     }
                     else
                     {

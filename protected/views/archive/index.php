@@ -47,7 +47,7 @@ $this->widget('zii.widgets.jui.CJuiSliderInput',array(
 
 <div id="archive">
 <?php
-//$this->render('webroot.themes.'.Yii::app()->theme->name.'.components.views.ViewName',$params);
+
 $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',

@@ -4,7 +4,10 @@
  * @var $id Cam
  */
 
-Yii::app()->theme = 'blank';
+/** @var CWebApplication $app */
+$app = Yii::app();
+$app->theme = 'blank';
+
 $this->layout = 'blank';
 
 

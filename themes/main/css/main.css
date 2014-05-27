@@ -241,7 +241,7 @@ body {
     background: #f1f1f1;
     color: #aa9d9d;
     font-size: 15px;
-    padding: 0px;
+    padding: 0;
     overflow-x: hidden;
 }
 
@@ -256,12 +256,12 @@ a:hover {
 .canvas {
     margin:0 auto;position:relative;
 }
-.example-grid {
+/*.example-grid {
     background-color:#FFFFFF;
     background-image: url(images/1190_15_10.png);
     background-repeat: repeat-y;
     margin:0 auto;position:relative;
-}
+}*/
 
 
 /* my */
@@ -272,7 +272,7 @@ a:hover {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    margin-left: 0px;
+    margin-left: 0;
     /*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
     margin-bottom: 52px;
 }
@@ -314,11 +314,11 @@ a:hover {
     text-align: left;
     font-family: 'Myriad Pro';
     font-size: 36px;
-    margin: 0px;
+    margin: 0;
     padding-top: 4px;
     padding-bottom: 4px;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 
@@ -354,8 +354,8 @@ a:hover {
 .footer h1{
     color: inherit;
     text-align: left;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     font-size: 23px;
     font-family: 'Myriad Pro';
     font-weight: bold;
@@ -371,8 +371,8 @@ a:hover {
     font-family: 'Myriad Pro';
     color: #d95100;
     font-size: 21px;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     padding-bottom: 16px;
     font-weight: normal;
 }
@@ -381,8 +381,8 @@ a:hover {
     font-family: 'Myriad Pro';
     color: #d95100;
     font-size: 21px;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     padding-bottom: 12px;
     padding-top: 16px;
     font-weight: bold;
@@ -392,8 +392,8 @@ a:hover {
 .text p, .white_box p{
     color: #555555;
     font-size: 15px;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     text-align: justify;
     line-height: 17px;
 }
@@ -419,7 +419,7 @@ a.button {
     background: -ms-linear-gradient(top, #f47208, #eb5002);
     background: -o-linear-gradient(top, #f47208, #eb5002);
     background-image: -ms-linear-gradient(top, #f47208 0%, #eb5002 100%);
-    padding: 6.5px 13px;
+    padding: 7px 13px;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
@@ -512,7 +512,7 @@ a.button2:active {
 
 a.button3 {
     width: 134px;
-    margin: 0px auto;
+    margin: 0 auto;
     display: block;
     border: 1px solid #eb5002;
     background: #ffffff;
@@ -572,8 +572,8 @@ div.tarif,div.tarif p{
 }
 
 div.tarif p{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     font-size: 19px;
     color: #8f8f8f;
     border-bottom: 1px dotted #888888;
@@ -602,8 +602,8 @@ h1.copyright{
 }
 
 .white_box .cols{
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     display: inline-block;
     padding-right: 10px;
     padding-left: 5px;

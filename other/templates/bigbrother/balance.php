@@ -33,10 +33,10 @@
                 <table>
                     
                     <tr>
-                        <td class="name_td"><span>Приход:</span></td><td><span>1000p</span></td>
+                        <td class="name_td"><span>пїЅпїЅпїЅпїЅпїЅпїЅ:</span></td><td><span>1000p</span></td>
                     </tr>
                     <tr>
-                        <td class="name_td"><span>Расход:</span></td><td><span>500p (камера в хелле)</span></td>
+                        <td class="name_td"><span>пїЅпїЅпїЅпїЅпїЅпїЅ:</span></td><td><span>500p (пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ)</span></td>
                     </tr>
                     
                 </table>
@@ -44,13 +44,13 @@
                 <table>
                     
                     <tr>
-                        <td class="name_td"><span>Тариф:</span></td><td><span>********</span></td>
+                        <td class="name_td"><span>пїЅпїЅпїЅпїЅпїЅ:</span></td><td><span>********</span></td>
                     </tr>
                     <tr>
-                        <td class="name_td"><span>Период:</span></td><td><span>5 дней</span></td>
+                        <td class="name_td"><span>пїЅпїЅпїЅпїЅпїЅпїЅ:</span></td><td><span>5 пїЅпїЅпїЅпїЅ</span></td>
                     </tr>
                     <tr>
-                        <td class="name_td"><span>Осталось:</span></td><td><span>25 дней</span></td>
+                        <td class="name_td"><span>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:</span></td><td><span>25 пїЅпїЅпїЅпїЅ</span></td>
                     </tr>
                     
                 </table>
@@ -62,7 +62,7 @@
             
                 
                 
-        </div>
+
         
         <div id="bottom_div_menu">
             

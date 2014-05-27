@@ -15,9 +15,12 @@ $this->menu=array(
 	array('label'=>'Manage Archive', 'url'=>array('admin')),
 );
 
-Yii::app()->clientScript->registerCSSFile('/mediaelement/build/mediaelementplayer.css');
-Yii::app()->clientScript->registerScriptFile('/mediaelement/build/jquery.js', CClientScript::POS_HEAD);
-Yii::app()->clientScript->registerScriptFile('/mediaelement/build/mediaelement-and-player.min.js', CClientScript::POS_HEAD);
+/** @var CWebApplication $app */
+$app = Yii::app();
+
+$app->clientScript->registerCSSFile('/mediaelement/build/mediaelementplayer.css');
+$app->clientScript->registerScriptFile('/mediaelement/build/jquery.js', CClientScript::POS_HEAD);
+$app->clientScript->registerScriptFile('/mediaelement/build/mediaelement-and-player.min.js', CClientScript::POS_HEAD);
 
 //Yii::app()->clientScript->registerCSSFile('http://vjs.zencdn.net/4.5/video-js.css');
 //Yii::app()->clientScript->registerScriptFile('http://vjs.zencdn.net/4.5/video.js', CClientScript::POS_HEAD);

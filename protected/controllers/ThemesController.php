@@ -4,19 +4,25 @@ class ThemesController extends Controller
 {
 	public function actionLk()
 	{
-        Yii::app()->theme = 'lk';
+        /** @var CWebApplication $app */
+        $app = Yii::app();
+        $app->theme = 'lk';
 		$this->render('lk');
 	}
 
 	public function actionMain()
 	{
-        Yii::app()->theme = 'main';
+        /** @var CWebApplication $app */
+        $app = Yii::app();
+        $app->theme = 'main';
 		$this->render('main');
 	}
 
     public function actionMain1()
     {
-        Yii::app()->theme = 'main';
+        /** @var CWebApplication $app */
+        $app = Yii::app();
+        $app->theme = 'main';
         $this->render('main1');
     }
 

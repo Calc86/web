@@ -1,4 +1,5 @@
 <?php /* @var $this Controller */ ?>
+<?php /* @var $content string */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
 <div class="span-30 white_box">
 

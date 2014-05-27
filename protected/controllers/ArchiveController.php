@@ -3,7 +3,9 @@
 class ArchiveController extends Controller
 {
     public function init(){
-        Yii::app()->theme = 'lk';
+        /** @var CWebApplication $app */
+        $app = Yii::app();
+        $app->theme = 'lk';
     }
 
 	/**

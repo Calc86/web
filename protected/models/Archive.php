@@ -23,12 +23,14 @@ class Archive extends CActiveRecord
     public $day;
 
     public function init(){
-        if(isset(Yii::app()->session[$this->tableName().'_search_h1']))
-            $this->h1 = Yii::app()->session[$this->tableName().'_search_h1'];
+        /** @var CWebApplication $app */
+        $app = Yii::app();
+        if(isset($app->session[$this->tableName().'_search_h1']))
+            $this->h1 = $app->session[$this->tableName().'_search_h1'];
         else
             $this->h1 = 0;
-        if(isset(Yii::app()->session[$this->tableName().'_search_h2']))
-            $this->h2 = Yii::app()->session[$this->tableName().'_search_h2'];
+        if(isset($app->session[$this->tableName().'_search_h2']))
+            $this->h2 = $app->session[$this->tableName().'_search_h2'];
         else
             $this->h2 = 24;
         //throw new CException(Yii::app()->session[$this->tableName().'_search_h2']);
@@ -115,9 +117,11 @@ class Archive extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+        /** @var CWebApplication $app */
+        $app = Yii::app();
 
-        Yii::app()->session[$this->tableName().'_search_h1'] = $this->h1;
-        Yii::app()->session[$this->tableName().'_search_h2'] = $this->h2;
+        $app->session[$this->tableName().'_search_h1'] = $this->h1;
+        $app->session[$this->tableName().'_search_h2'] = $this->h2;
         $start = mktime($this->h1,0,0,$m,$d,$y);
         $end =   mktime($this->h2,0,0,$m,$d,$y);
         $criteria->compare('cam_id',$this->cam_id);
