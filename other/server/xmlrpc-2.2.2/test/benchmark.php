@@ -7,7 +7,7 @@
  * @license code licensed under the BSD License: http://phpxmlrpc.sourceforge.net/license.txt
  **/
 
-	include(getcwd().'/parse_args.php');
+	include(getcwd() . '/parse_args.php');
 
 	require_once('xmlrpc.inc');
 

@@ -14,7 +14,7 @@
  * @todo add http no-cache headers
  **/
 
-  include(getcwd().'/common.php');
+  include(getcwd() . '/common.php');
   if ($action == '')
     $action = 'list';
 
@@ -215,8 +215,8 @@ td {vertical-align: top; font-family: Verdana, Arial, Helvetica; font-size: 8pt;
 </script>
 </head>
 <body onload="switchtransport(<?php echo $wstype;?>); switchaction(); switchssl(); switchauth(); swicthcainfo();<?php if ($run) echo ' document.forms[2].submit();'; ?>">
-<h1>XMLRPC <form name="frmxmlrpc" style="display: inline;" action="."><input name="yes" type="radio" onclick="switchtransport(0);"/></form>
-/<form name="frmjsonrpc" style="display: inline;" action="."><input name="yes" type="radio" onclick="switchtransport(1);"/></form>JSONRPC Debugger (based on the <a href="http://phpxmlrpc.sourceforge.net">PHP-XMLRPC</a> library)</h1>
+<h1>XMLRPC <form name="frmxmlrpc" style="display: inline;" action=""><input name="yes" type="radio" onclick="switchtransport(0);"/></form>
+/<form name="frmjsonrpc" style="display: inline;" action=""><input name="yes" type="radio" onclick="switchtransport(1);"/></form>JSONRPC Debugger (based on the <a href="http://phpxmlrpc.sourceforge.net">PHP-XMLRPC</a> library)</h1>
 <form name="frmaction" method="get" action="action.php" target="frmaction" onSubmit="switchFormMethod();"
 >
 

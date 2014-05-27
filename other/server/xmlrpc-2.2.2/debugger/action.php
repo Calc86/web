@@ -37,7 +37,7 @@ td form {margin: 0;}
 <body>
 <?php
 
-  include(getcwd().'/common.php');
+  include(getcwd() . '/common.php');
   if ($action)
   {
 
