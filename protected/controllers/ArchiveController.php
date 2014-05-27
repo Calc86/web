@@ -188,6 +188,9 @@ class ArchiveController extends Controller
         if(!$file) $file = $model->pathAvi();
         $file = str_replace('/home/vlc/vlc/rec','',$file);
         $file = str_replace('/home/vlc/web/rec','',$file);
+        $file = str_replace('/home/vlc/vlc/rec','',$file);
+        $file = str_replace('/home/vlc/dvr/rec','',$file);
+        $file = str_replace('/home/vlc/mount/rec','',$file);
         //return $file;
         return MyConfig::getNginxArchiveUrl($file);
     }
