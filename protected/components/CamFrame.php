@@ -5,6 +5,9 @@
  */
 class CamFrame extends CComponent
 {
+    const PLUGIN_IMG = 'img';
+    const SRC_MOTION = 'motion';
+
     public $width = 420;
     public $height = 316;
     protected $cam;
@@ -202,6 +205,9 @@ class CamFrame extends CComponent
      * @return string
      */
     public function fp5_plugin($source){
+        //$source = 'http://10.154.28.203/lhttp/1/stream-1.m3u8';
+        $source = 'http://10.154.28.203:9008/path.mp4';
+
         $baseUrl = Yii::app()->baseUrl;
         $cs = Yii::app()->clientScript;
         /* @var $cs CClientScript */
@@ -226,7 +232,12 @@ class CamFrame extends CComponent
      * @return string
      */
     public function fpf_plugin($source){
-        $source = 'http://10.154.28.205'.$source;
+        //$source = 'http://10.154.28.203/lhttp/1/stream-11.m3u8';
+        //$source = 'http://10.154.28.203:9001/path.mp4';
+        //$source = 'http://10.154.28.203/lhttp/1/stream-1.m3u8';
+        //$source = 'http://10.154.28.203:11008/stream.flv';
+        $source = 'http://10.154.28.191:13002/1.flv';
+        $source = 'http://10.154.28.203:9008/path.mp4';
         $baseUrl = Yii::app()->baseUrl;
         $cs = Yii::app()->clientScript;
         /* @var $cs CClientScript */
@@ -236,6 +247,21 @@ class CamFrame extends CComponent
         $cs->registerScript('flowplayer', '
              flowplayer("player", "'.$path.'/flowplayer-3.2.18.swf");
         ');
+        /*$cs->registerScript('flowplayer', '
+             flowplayer("player", "'.$path.'/flowplayer-3.2.18.swf", {
+                plugins:  {
+                    httpstreaming: {
+                        url: \'/flowplayer/flash/flowplayer.httpstreaminghls-3.2.10.swf\'
+                    },
+                },
+                clip: {
+                    url: "'.$source.'",
+                    urlResolvers: ["httpstreaming"],
+                    provider: "httpstreaming",
+                    autoPlay: true,
+                }
+             });
+        ');*/
 
         return '
             <a href="'.$source.'"

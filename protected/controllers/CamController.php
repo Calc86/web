@@ -39,7 +39,7 @@ class CamController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','live','archive','balans','settings','news','snap','ajax'),
+				'actions'=>array('index','view','live','archive','balans','settings','news','snap','ajax', 'secure'),
 				//'users'=>array('@'),
                 'roles' => array('user'),
 			),
@@ -219,6 +219,10 @@ class CamController extends Controller
     public function actionLive($index=0, $src = 'srv', $plugin = 'vlc')
     {
         $this->render('live',array('index'=>$index, 'src'=>$src, 'plugin'=>$plugin));
+    }
+
+    public function actionSecure(){
+        $this->render('secure');
     }
 
 	/**
