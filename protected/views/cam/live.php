@@ -1,6 +1,6 @@
 <?php
 /* @var $this CamController
- * @var $index
+ * @var $cam Cam
  * @var $src
  * @var $plugin
  */
@@ -12,12 +12,7 @@ $this->breadcrumbs=array(
 
 $this->layout = 'column2columns';
 
-//todo: переделать ссылку на обычную ссылку без параметров, в одной переменной и id камеры нужно брать из какого либо скрытого поля
-$cams = Cam::model()->search();
-
-if(count($cams->data)){
-    $cam = $cams->data[$index];
-
+if($cam != null){
     $live_url = $this->createUrl("ajax",array("id"=>$cam->id,'type'=>'live'));
     $rec_url = $this->createUrl("ajax",array("id"=>$cam->id,'type'=>'rec'));
     $mtn_url = $this->createUrl("ajax",array("id"=>$cam->id,'type'=>'mtn'));
@@ -76,12 +71,9 @@ if(count($cams->data)){
 <div class="column1">
     <div id="live" class="shadow font16">
         <?php
-            /** @var CWebApplication $app */
-            $app = Yii::app();
-            $app->session['cam_id'] = $cams->data[$index]->id;
-            if($cams->itemCount!=0){
+            if($cam != null){
                 /** @var CamSettings $cs */
-                $cs = CamSettings::model()->findByAttributes(array('cam_id'=>$cams->data[$index]->id));
+                $cs = CamSettings::model()->findByAttributes(array('cam_id'=>$cam->id));
                 $frame = new CamFrame($cs);
                 echo $frame->live($src, $plugin);
             }
@@ -96,27 +88,26 @@ if(count($cams->data)){
     ?>
     <div class="font16 text" id="text">
         <div id="control">
-            <?php if($cams->itemCount){
-                $cam = $cams->data[$index];
+            <?php if($cam != null){
                 $live = $cam->live ? ' on' : '';
                 $rec = $cam->rec ? ' on' : '';
                 $mtn = $cam->mtn ? ' on' : '';
                 ?>
 
                 <div style="background-color: white;">
-                    <a href="<?=$this->createUrl('', array('index'=>$index))?>">dvr</a>
+                    <a href="<?=$this->createUrl('', array('id'=>$cam->id))?>">dvr</a>
                     motion
                     (
-                    <a href="<?=$this->createUrl('', array('index'=>$index, 'src'=>'motion'))?>">std</a>,
-                    <a href="<?=$this->createUrl('', array('index'=>$index, 'src'=>'motion', 'plugin'=>'img'))?>">img</a>
-                    <a href="<?=$this->createUrl('', array('index'=>$index, 'src'=>'motion', 'plugin'=>'cambozola'))?>">cambozola</a>
-                    <a href="<?=$this->createUrl('', array('index'=>$index, 'src'=>'motion', 'plugin'=>'axis'))?>">axis</a>
+                    <a href="<?=$this->createUrl('', array('id'=>$cam->id, 'src'=>'motion'))?>">std</a>,
+                    <a href="<?=$this->createUrl('', array('id'=>$cam->id, 'src'=>'motion', 'plugin'=>'img'))?>">img</a>
+                    <a href="<?=$this->createUrl('', array('id'=>$cam->id, 'src'=>'motion', 'plugin'=>'cambozola'))?>">cambozola</a>
+                    <a href="<?=$this->createUrl('', array('id'=>$cam->id, 'src'=>'motion', 'plugin'=>'axis'))?>">axis</a>
                     <a target="_blank" href="<?=$this->createUrl('snap')?>">snap</a>
                     )
                 </div>
 
                 <div class="button first cam" data-href="<?=$this->createUrl("update",array('id'=>$cam->id))?>">&nbsp;</div>
-                <div class="button settings" data-href="<?=$this->createUrl("camSettings/update",array('cam_id'=>$cams->data[$index]->id))?>">&nbsp;</div>
+                <div class="button settings" data-href="<?=$this->createUrl("camSettings/update",array('cam_id'=>$cam->id))?>">&nbsp;</div>
                 <div class="button play<?=$live?>">&nbsp;</div>
                 <div class="button rec<?=$rec?>">&nbsp;</div>
                 <div class="button last mtn<?=$mtn?>">&nbsp;</div>
@@ -132,21 +123,21 @@ if(count($cams->data)){
     <?php
 
     $cams = Cam::model()->search();
-    $i=0;
-    foreach($cams->data as $cam){
-        $style = ' style="background-image: url('.$this->createUrl("snap",array('id'=>$cam->id)).');"';
-        $url = $this->createUrl('live',array('index'=>$i));
-        $on = $index==$i ? ' on' : '';
+    foreach($cams->data as $c){
+        $style = ' style="background-image: url('.$this->createUrl("snap",array('id'=>$c->id)).');"';
+        $url = $this->createUrl('live',array('id'=>$c->id));
+        $on = '';
+        if($cam != null)
+            $on = $cam->id==$c->id ? ' on' : '';
 
         //echo '<a'.$style.' href=""></a>';
         ?>
-        <a style="background-image: url(<?=MyConfig::getNginxImgUrl($cam->id);?>)" href="<?=$url?>" class="kadr small shadow<?=$on;?>"<?=$style?>>
+        <a style="background-image: url(<?=MyConfig::getNginxImgUrl($c->id);?>)" href="<?=$url?>" class="kadr small shadow<?=$on;?>"<?=$style?>>
             <div class="font16">
-                <?=$cam->name?>
+                <?=$c->name?>
             </div>
         </a>
         <?php
-        $i++;
     }
     ?>
 </div>
