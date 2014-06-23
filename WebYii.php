@@ -6,7 +6,7 @@
  * Time: 13:53
  */
 
-class MyYii extends Yii {
+class WebYii extends Yii {
     /**
      * @return CWebApplication
      */
