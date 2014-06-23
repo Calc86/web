@@ -23,6 +23,15 @@
 
 class Cam extends CActiveRecord
 {
+    public function defaultScope()
+    {
+        //можем получить только камеры нашего пользователя
+        return array(
+            'condition' => 'user_id='.Helper::getUserID(),
+            'order' => 'name ASC',
+        );
+    }
+
     /**
      * @return string the associated database table name
      */
@@ -40,11 +49,13 @@ class Cam extends CActiveRecord
         // will receive user inputs.
         return array(
             array('zone_id, name', 'required'),
-            array('zone_id, user_id, order, type_id', 'numerical', 'integerOnly'=>true),
+            //array('zone_id, user_id, order, type_id', 'numerical', 'integerOnly'=>true),
+            array('zone_id, order, type_id', 'numerical', 'integerOnly'=>true),
             array('name, ip, user, pass', 'length', 'max'=>255),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, zone_id, user_id, name, order, type_id, ip, user, pass', 'safe', 'on'=>'search'),
+            //array('id, zone_id, name, order, type_id, ip, user, pass', 'safe', 'on'=>'search'),
             array('live','numerical',  'on'=>'live'),
             array('rec','numerical', 'on'=>'rec'),
             array('mtn','numerical', 'on'=>'mtn'),
@@ -95,14 +106,13 @@ class Cam extends CActiveRecord
      */
     public function search()
     {
-        /** @var CWebApplication $app */
-        $app = Yii::app();
+        $app = WebYii::app();
 
         $criteria=new CDbCriteria;
 
         //$criteria->compare('id',$this->id);
         //$criteria->compare('zone_id',$this->zone_id);
-        $criteria->compare('user_id',$app->user->id);
+        //$criteria->compare('user_id',Helper::getUserID());
         //$criteria->compare('name',$this->name,true);
         //$criteria->compare('order',$this->order);
         //$criteria->compare('type_id',$this->type_id);
@@ -130,7 +140,7 @@ class Cam extends CActiveRecord
         if(parent::beforeSave()){
             /** @var CWebApplication $app */
             $app = Yii::app();
-            $this->user_id = $app->user->id;
+            $this->user_id = Helper::getUserID();
             return true;
         }
         else
@@ -190,7 +200,7 @@ class Cam extends CActiveRecord
         //$value = $this->$type;
 
         //$url = 'http://10.154.28.202/rpc/vlc.php?token='.Yii::app()->user->id;
-        $url = MyConfig::getLiveRPCUrl(MyYii::app()->user->id);
+        $url = MyConfig::getLiveRPCUrl(WebYii::app()->user->id);
         /*$client = new Zend_XmlRpc_Client($url);
         $rpc = $client->getProxy('rpc');*/
         /*try
