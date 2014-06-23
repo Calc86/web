@@ -2,6 +2,10 @@
 
 class CamController extends Controller
 {
+    const SES_PLUGIN = 'plugin';
+    const SES_PLUGIN_DEFAULT = 'vlc';
+
+
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -13,9 +17,7 @@ class CamController extends Controller
 
     public function init(){
 
-        /** @var CWebApplication $app */
-        $app = Yii::app();
-        $app->theme = 'lk';
+        Helper::useLkTheme();
 
         $cr_zones = new CDbCriteria();
         /** @var CWebApplication $app */
@@ -76,7 +78,6 @@ class CamController extends Controller
 
     public function actionSnap()
     {
-        //$this->renderPartial('_snap',array());
         $this->render('snap');
     }
 
@@ -109,21 +110,21 @@ class CamController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Cam();
+		$cam = Cam::model();
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Cam']))
 		{
-			$model->attributes=$_POST['Cam'];
-			if($model->save())
+			$cam->attributes=$_POST['Cam'];
+			if($cam->save())
 				//$this->redirect(array('view','id'=>$model->id));
                 $this->redirect(array('live'));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$cam,
 		));
 	}
 
@@ -165,17 +166,6 @@ class CamController extends Controller
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
-
-	/**
-	 * Lists all models.
-	 */
-	/*public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Cam');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}*/
 
 	/**
 	 * Manages all models.
@@ -222,9 +212,38 @@ class CamController extends Controller
         $this->render('settings');
     }
 
-    public function actionLive($index=0, $src = 'srv', $plugin = 'vlc')
+    /**
+     * @return int
+     */
+    private function getFirstCamID(){
+        $cam = new Cam('search');
+        $cam->user_id = WebYii::app()->user->id;
+        $data = $cam->search();
+        if($data->itemCount > 0) return $data->data[0]->id;
+
+        return 0;
+    }
+
+    /**
+     * Проверяет, есть ли у этого пользователя такой ID
+     * @param $camID
+     * @return int
+     */
+    private function validateCamID($camID){
+        if(Cam::model()->findByPk($camID) != null)
+            return $camID;
+        else
+            return 0;
+    }
+
+    public function actionLive($id = 0, $src = 'srv')
     {
-        $this->render('live',array('index'=>$index, 'src'=>$src, 'plugin'=>$plugin));
+        if($id) Helper::setSesVar(__CLASS__, 'cam_id', $this->validateCamID($id));
+        $id = Helper::getSesVar(__CLASS__, 'cam_id', $this->getFirstCamID());
+
+        $cam = Cam::model()->findByPk($id);
+        $plugin = Helper::getSesVar(__CLASS__, self::SES_PLUGIN, self::SES_PLUGIN_DEFAULT);
+        $this->render('live', array('cam'=>$cam, 'src'=>$src, 'plugin'=>$plugin));
     }
 
     public function actionSecure(){
