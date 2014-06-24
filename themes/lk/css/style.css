@@ -193,8 +193,9 @@ a.archive{
 .kadr.small{
     width: 133px;
     height: 100px;
-    margin-right: 14px;
+    margin-right: 4px;
     margin-bottom: 7px;
+    margin-left: 10px;
 }
 
 .kadr.normal{
@@ -209,7 +210,7 @@ a.archive{
 }
 
 .shadow.on{
-    box-shadow: #ffb33a 0 0 8px;
+    box-shadow: #ffff00 0 0 20px;
 }
 
 
@@ -226,6 +227,15 @@ a.archive{
     margin-top: 0;
     /*width: 100%;*/
     text-align: center;
+    color: #ffffff;
+}
+
+.menu a{
+    color: #ffffff;
+}
+
+.menu a:hover{
+    color: #b3801a;
 }
 
 .menu.pos1 {
@@ -788,4 +798,18 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
     background-repeat: no-repeat;
     background-position: center;
     background-image: url(images/cc_mono/human24.png);
+}
+
+#plugins {
+    text-align: center;
+    background-color: cornflowerblue;
+    padding: 8px;
+}
+
+#plugins a{
+    color: #d3d3d3;
+}
+
+#plugins a:hover{
+    color: #808080;
 }
