@@ -23,6 +23,14 @@
 
 class Cam extends CActiveRecord
 {
+    const LIVE = 'live';
+    const RECORD = 'rec';
+    const MOTION = 'mtn';
+
+    const SOURCE_SERVER = 'srv';
+    const SOURCE_DEFAULT = self::SOURCE_SERVER;
+    const SOURCE_MOTION = 'motion';
+
     public function defaultScope()
     {
         //можем получить только камеры нашего пользователя
@@ -162,6 +170,30 @@ class Cam extends CActiveRecord
             $settings->setByType($type);
             $settings->save();
         }
+    }
+
+    public function getSnapshot(){
+        return MyConfig::getNginxMotionSnap($this->id);
+    }
+
+    public function getServerSource(){
+        return MyConfig::getNginxVlcStream($this->id);
+    }
+
+    public function getMotionSource(){
+        return MyConfig::getNginxMotionStream($this->id);
+    }
+
+    public function getVideoSource($source = self::SOURCE_DEFAULT){
+        switch($source){
+            case self::SOURCE_MOTION:
+                return $this->getMotionSource();
+                break;
+            case self::SOURCE_SERVER:
+                return $this->getServerSource();
+        }
+
+        return '';
     }
 
     /*public function snapshot(){
