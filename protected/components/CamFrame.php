@@ -5,6 +5,7 @@
  */
 class CamFrame extends CComponent
 {
+    // TODO: бОльшая часть плагинов должна быть в модели Cam
     const PLUGIN_IMG = 'img';
     const SRC_MOTION = 'motion';
 
@@ -210,10 +211,10 @@ class CamFrame extends CComponent
         //$source = 'http://10.154.28.203/lhttp/1/stream-1.m3u8';
         $source = 'http://10.154.28.203:9008/path.mp4';
 
-        $baseUrl = MyYii::app()->baseUrl;
-        $cs = MyYii::app()->clientScript;
+        $baseUrl = WebYii::app()->baseUrl;
+        $cs = WebYii::app()->clientScript;
         /* @var $cs CClientScript */
-        $path = MyYii::app()->baseUrl."/flowplayer/html5";
+        $path = WebYii::app()->baseUrl."/flowplayer/html5";
 
         //$cs->registerCssFile("$path/skin/minimalist.css");
         $cs->registerCssFile("$path/skin/playful.css");
@@ -237,11 +238,11 @@ class CamFrame extends CComponent
         //$source = 'http://10.154.28.203/lhttp/1/stream-11.m3u8';
         //$source = 'http://10.154.28.203:9001/path.mp4';
         //$source = 'http://10.154.28.203/lhttp/1/stream-1.m3u8';
-        //$source = 'http://10.154.28.203:11008/stream.flv';
-        $source = 'http://10.154.28.191:13002/1.flv';
-        $source = 'http://10.154.28.203:9008/path.mp4';
+        $source = 'http://10.154.28.203:11011/stream.flv';
+        //$source = 'http://10.154.28.191:13008/1.flv';
+        //$source = 'http://10.154.28.203:9008/path.mp4';
         $baseUrl = Yii::app()->baseUrl;
-        $cs = MyYii::app()->clientScript;
+        $cs = WebYii::app()->clientScript;
         /* @var $cs CClientScript */
         $path = Yii::app()->baseUrl."/flowplayer/flash";
         $cs->registerScriptFile("$path/flowplayer-3.2.13.min.js");
