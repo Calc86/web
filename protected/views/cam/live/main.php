@@ -23,7 +23,8 @@ $this->breadcrumbs=array(
                 echo $frame->live($src, $plugin);
             }
         ?>
-    </div>    <div class="font16 text" id="text">
+    </div>
+    <div class="font16 text" id="text">
         <div id="plugins">
             <?php if($cam != null){ ?>
                 <a href="<?=$this->createUrl('', array('id'=>$cam->id, 'plugin'=>'vlc'))?>">Живое видео</a> |
