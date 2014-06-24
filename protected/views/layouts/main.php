@@ -33,8 +33,8 @@
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>MyYii::app()->user->isGuest),
-				array('label'=>'Logout ('.MyYii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!MyYii::app()->user->isGuest)
+				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>WebYii::app()->user->isGuest),
+				array('label'=>'Logout ('.WebYii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!WebYii::app()->user->isGuest)
 			),
 		)); ?>
 	</div><!-- mainmenu -->

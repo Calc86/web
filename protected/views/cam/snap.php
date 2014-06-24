@@ -1,21 +1,17 @@
 <?php
 
 /* @var $this Controller
- * @var $id Cam
+ * @var $cam Cam
  */
 
-/** @var CWebApplication $app */
-$app = Yii::app();
-$app->theme = 'blank';
-
+WebYii::app()->theme = 'blank';
 $this->layout = 'blank';
+?>
 
+<script>
+    function reload(){
+        location.reload();
+    }
+</script>
 
-//Yii::app()->session['cam_id'] = $id;
-//$frame = new CamFrame($cs);
-$frame = new CamFrame(new CamSettings());
-echo $frame->live('m_snap', 'snap');
-
-//echo file_get_contents("http://localhost/".$url);
-
-//<img id="snap" src="<?=$url;">
+<a id="frame" onClick="reload()" href="#"><img src="<?=$cam->getSnapshot()?>"></a>

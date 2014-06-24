@@ -8,12 +8,13 @@
 
 /* @var $this CController
  * @var $cam
+ * @var $active_id
  */
 
 $url = $this->createUrl('live',array('id'=>$cam->id));
 $on = '';
 if($cam != null)
-    $on = $cam->id==$cam->id ? ' on' : '';
+    $on = $cam->id == $active_id ? ' on' : '';
 
 $nginxImage = MyConfig::getNginxImgUrl($cam->id);
 
