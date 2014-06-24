@@ -17,7 +17,7 @@ class PhpAuthManager extends CPhpAuthManager{
 
         // Для гостей у нас и так роль по умолчанию guest.
         /** @var WebUser $user */
-        $user = MyYii::app()->user;
+        $user = WebYii::app()->user;
         if(!$user->isGuest){
             // Связываем роль, заданную в БД с идентификатором пользователя,
             // возвращаемым UserIdentity.getId().
@@ -25,8 +25,7 @@ class PhpAuthManager extends CPhpAuthManager{
 
             $existingRoles = $this->getRoles();
 
-            //todo разобраться с этим
-            if ($user->roles) {
+            if ($user->getRoles()) {
                 foreach ($user->roles as $roles) {
                     if ($existingRoles[$roles]) {
                         $this->assign($roles, $user->id);
