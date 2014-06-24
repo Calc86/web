@@ -7,14 +7,14 @@
 	<meta name="language" content="en" />
 
 	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo MyYii::app()->theme->baseUrl; ?>/css/screen.css" media="screen, projection" />
-	<link rel="stylesheet" type="text/css" href="<?php echo MyYii::app()->theme->baseUrl; ?>/css/print.css" media="print" />
+	<link rel="stylesheet" type="text/css" href="<?php echo WebYii::app()->theme->baseUrl; ?>/css/screen.css" media="screen, projection" />
+	<link rel="stylesheet" type="text/css" href="<?php echo WebYii::app()->theme->baseUrl; ?>/css/print.css" media="print" />
 	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo MyYii::app()->theme->baseUrl; ?>/css/ie.css" media="screen, projection" />
+	<link rel="stylesheet" type="text/css" href="<?php echo WebYii::app()->theme->baseUrl; ?>/css/ie.css" media="screen, projection" />
 	<![endif]-->
 
-	<link rel="stylesheet" type="text/css" href="<?php echo MyYii::app()->theme->baseUrl; ?>/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo MyYii::app()->theme->baseUrl; ?>/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo WebYii::app()->theme->baseUrl; ?>/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo WebYii::app()->theme->baseUrl; ?>/css/form.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -34,16 +34,16 @@
                             array('label'=>'Главная', 'url'=>array('/site/index')),
                             array('label'=>'О нас', 'url'=>array('/site/about')),
                             array('label'=>'Контакты', 'url'=>array('/site/contact')),
-                            array('label'=>'Войти', 'url'=>array('/site/login', '#'=>'login'), 'visible'=>MyYii::app()->user->isGuest),
-                            array('label'=>'Видеонаблюдение', 'url'=>array('/cam'), 'visible'=>MyYii::app()->user->checkAccess('user')),
+                            array('label'=>'Войти', 'url'=>array('/site/login', '#'=>'login'), 'visible'=>WebYii::app()->user->isGuest),
+                            array('label'=>'Видеонаблюдение', 'url'=>array('/cam'), 'visible'=>WebYii::app()->user->checkAccess('user')),
                             //array('label'=>'Профиль', 'url'=>array('user/view','id'=>Yii::app()->user->id), 'visible'=>Yii::app()->user->checkAccess('user')),
-                            array('label'=>'Выйти ('.MyYii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!MyYii::app()->user->isGuest),
-                            array('label'=>'Admin:', 'visible'=>MyYii::app()->user->checkAccess('moderator')),
-                            array('label'=>'Pages', 'url'=>array('/Pages/index'), 'visible'=>MyYii::app()->user->checkAccess('moderator')),
-                            array('label'=>'Vendors', 'url'=>array('/camType/index'), 'visible'=>MyYii::app()->user->checkAccess('admin')),
-                            array('label'=>'Types', 'url'=>array('/camVendor/index'), 'visible'=>MyYii::app()->user->checkAccess('admin')),
-                            array('label'=>'Users', 'url'=>array('/user'), 'visible'=>MyYii::app()->user->checkAccess('admin')),
-                            array('label'=>'install roles', 'url'=>array('Roles'), 'visible'=>MyYii::app()->user->checkAccess('admin')),
+                            array('label'=>'Выйти ('.WebYii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!WebYii::app()->user->isGuest),
+                            array('label'=>'Admin:', 'visible'=>WebYii::app()->user->checkAccess('moderator')),
+                            array('label'=>'Pages', 'url'=>array('/Pages/index'), 'visible'=>WebYii::app()->user->checkAccess('moderator')),
+                            array('label'=>'Vendors', 'url'=>array('/camType/index'), 'visible'=>WebYii::app()->user->checkAccess('admin')),
+                            array('label'=>'Types', 'url'=>array('/camVendor/index'), 'visible'=>WebYii::app()->user->checkAccess('admin')),
+                            array('label'=>'Users', 'url'=>array('/user'), 'visible'=>WebYii::app()->user->checkAccess('admin')),
+                            array('label'=>'install roles', 'url'=>array('Roles'), 'visible'=>WebYii::app()->user->checkAccess('admin')),
                         ),
                     )); ?>
                 </div>
@@ -56,7 +56,7 @@
         </div>
         <div class="head_line2 line">
             <div class="span-30 last logo">
-                <img src="<?php echo MyYii::app()->theme->baseUrl; ?>/css/images/logo.png" />
+                <img src="<?php echo WebYii::app()->theme->baseUrl; ?>/css/images/logo.png" />
             </div>
         </div>
         <div class="head_line3 line">
@@ -67,7 +67,7 @@
                 <p class="button2"><a href='<?=$main->descr;?>' class='button2'>Прочитать</a></p>
             </div>
             <div class="span-18 append-bottom last cam">
-                <img src="<?php echo MyYii::app()->theme->baseUrl; ?>/css/images/cam.png" />
+                <img src="<?php echo WebYii::app()->theme->baseUrl; ?>/css/images/cam.png" />
             </div>
         </div>
 
