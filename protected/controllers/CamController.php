@@ -3,7 +3,19 @@
 class CamController extends Controller
 {
     const SES_PLUGIN = 'plugin';
-    const SES_PLUGIN_DEFAULT = 'vlc';
+    const SES_SOURCE = 'src';
+
+    /* GET parameters */
+    const GET_ID = 'id';
+    const GET_TYPE = 'type';
+
+    const CAM_ID = 'cam_id';
+
+    const DEFAULT_VIEW = 'live';
+
+    const PLUGIN_VLC = 'vlc_web_plugin';
+    const PLUGIN_DEFAULT = self::PLUGIN_VLC;
+    const PLUGIN_MJPEG_IMG = 'mjpeg_img';
 
 
 	/**
@@ -76,9 +88,14 @@ class CamController extends Controller
 		));
 	}
 
-    public function actionSnap()
+    public function actionSnap($id)
     {
-        $this->render('snap');
+        /*$id = Helper::getSesVar(__CLASS__, self::CAM_ID);*/
+        $cam = Cam::model()->findByPk($id);
+        if($cam != null)
+            $this->render('snap', array('cam' => $cam));
+        else
+            throw new CHttpException(403, "Access denied");
     }
 
     public function actionAjax($id,$type){
@@ -88,15 +105,15 @@ class CamController extends Controller
         echo $model->getScenario().' ';
 
         switch($type){
-            case 'live':
+            case Cam::LIVE:
                 $model->live = ($model->live) ? 0 : 1;
                 $model->save();
                 break;
-            case 'rec':
+            case Cam::RECORD:
                 $model->rec = ($model->rec) ? 0 : 1;
                 $model->save();
                 break;
-            case 'mtn':
+            case Cam::MOTION:
                 $model->mtn = ($model->mtn) ? 0 : 1;
                 $model->save();
                 break;
@@ -120,7 +137,7 @@ class CamController extends Controller
 			$cam->attributes=$_POST['Cam'];
 			if($cam->save())
 				//$this->redirect(array('view','id'=>$model->id));
-                $this->redirect(array('live'));
+                $this->redirect(array(self::DEFAULT_VIEW));
 		}
 
 		$this->render('create',array(
@@ -145,7 +162,7 @@ class CamController extends Controller
 			$model->attributes=$_POST['Cam'];
 			if($model->save())
 				//$this->redirect(array('view','id'=>$model->id));
-                $this->redirect(array('live'));
+                $this->redirect(array(self::DEFAULT_VIEW));
 		}
 
 		$this->render('update',array(
@@ -234,16 +251,38 @@ class CamController extends Controller
             return $camID;
         else
             return 0;
+        // может тут вызывать 403?
     }
 
-    public function actionLive($id = 0, $src = 'srv')
+    public function actionLive($id = 0, $src = '', $plugin = '')
     {
-        if($id) Helper::setSesVar(__CLASS__, 'cam_id', $this->validateCamID($id));
-        $id = Helper::getSesVar(__CLASS__, 'cam_id', $this->getFirstCamID());
+        //if($id) $id = $this->validateCamID($id);
+        if(!$id) $id = $this->getFirstCamID();
 
-        $cam = Cam::model()->findByPk($id);
-        $plugin = Helper::getSesVar(__CLASS__, self::SES_PLUGIN, self::SES_PLUGIN_DEFAULT);
-        $this->render('live', array('cam'=>$cam, 'src'=>$src, 'plugin'=>$plugin));
+        if($plugin == '') $plugin = Helper::getSesVar(__CLASS__, self::SES_PLUGIN, self::PLUGIN_DEFAULT);
+        Helper::setSesVar(__CLASS__, self::SES_PLUGIN, $plugin);
+
+        if($src == '') $src = Helper::getSesVar(__CLASS__, self::SES_SOURCE, Cam::SOURCE_DEFAULT);
+        Helper::setSesVar(__CLASS__, self::SES_SOURCE, $src);
+
+        if($plugin == self::PLUGIN_MJPEG_IMG) $src = Cam::SOURCE_MOTION;
+
+        /** @var Cam $cam */
+        $cam = Cam::model('Cam')->findByPk($id);
+
+        $frame = '';
+
+        $frameName = 'frames/'.$plugin;
+        if(!$this->getViewFile($frameName)){
+            $frame = '';
+        }
+        else{
+            if($cam != null)
+                $frame = $this->renderPartial('frames/'.$plugin, array('source' => $cam->getVideoSource($src)), true);
+        }
+
+        $params = array('cam'=>$cam, 'src'=>$src, 'plugin'=>$plugin, 'frame' => $frame);
+        $this->render('live/main', $params);
     }
 
     public function actionSecure(){
