@@ -11,10 +11,10 @@ $this->breadcrumbs=array(
 
 <h1>Contact Us</h1>
 
-<?php if(MyYii::app()->user->hasFlash('contact')): ?>
+<?php if(WebYii::app()->user->hasFlash('contact')): ?>
 
 <div class="flash-success">
-	<?php echo MyYii::app()->user->getFlash('contact'); ?>
+	<?php echo WebYii::app()->user->getFlash('contact'); ?>
 </div>
 
 <?php else: ?>
