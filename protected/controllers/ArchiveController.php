@@ -2,10 +2,13 @@
 
 class ArchiveController extends Controller
 {
+    const GET_CAM_ID = 'cam_id';
+    const GET_MONTH = 'month';
+    const GET_YEAR = 'year';
+    const GET_DAY = 'day';
+
     public function init(){
-        /** @var CWebApplication $app */
-        $app = Yii::app();
-        $app->theme = 'lk';
+        Helper::useLkTheme();
     }
 
 	/**
@@ -58,7 +61,7 @@ class ArchiveController extends Controller
 	public function actionView($id)
 	{
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=> $this->loadModel($id),
 		));
 	}
 
@@ -123,59 +126,100 @@ class ArchiveController extends Controller
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
+    /**
+     * @param $camID
+     * @return Cam|null
+     */
+    private function getCamSoft($camID){
+        $cam = Cam::model()->findByPk($camID);
+        return $cam;
+    }
 
-    public function actionCal($cid,$m=0,$y=0)
-    {
-        //TODO: Сделать проверку на int и изменения значений
-        if(!$y) $y = (int) date('Y');
-        if(!$m) $m = (int) date('m');
+    /**
+     * @param $camID
+     * @return Cam
+     * @throws CHttpException
+     */
+    private function getCamHard($camID){
+        $cam = $this->getCamSoft($camID);
+        if($cam == null) throw new CHttpException(403, "Access denied");
+        return $cam;
+    }
 
-        $start = mktime(0, 0, 0, $m, 1, $y);
-        $end =   mktime(0, 0, 0, $m+1, 1, $y);
+    /**
+     * @param $cam
+     * @param $month
+     * @param $year
+     * @return CDbCriteria
+     */
+    private function getCalendarCriteria($cam, $month, $year){
+
+        $start = mktime(0, 0, 0, $month,   1, $year);
+        $end =   mktime(0, 0, 0, $month+1, 1, $year);
 
         $criteria = new CDbCriteria();
         $criteria->distinct = true;
         $criteria->select = new CDbExpression("DATE_FORMAT(FROM_UNIXTIME(date_start),'%e') as day");
-        $criteria->addCondition("cam_id=$cid");
-        $criteria->addBetweenCondition('date_start',$start,$end);
+        $criteria->addCondition("cam_id=$cam->id");
+        $criteria->addBetweenCondition('date_start', $start, $end);
         $criteria->addCondition("rebuilded='yes'");
+        return $criteria;
+    }
+
+    public function actionCal($cam_id, $month = 0, $year = 0)
+    {
+        $cam = $this->getCamHard($cam_id);
+
+        $month = (int) $month;
+        $year = (int) $year;
+
+        if(!is_numeric($year)  || !$year) $year = (int) date('Y');
+        if(!is_numeric($month) || !$month) $month = (int) date('m');
 
         $dataProvider=new CActiveDataProvider('Archive',
             array(
-                'criteria'=>$criteria,
+                'criteria'=>$this->getCalendarCriteria($cam, $month, $year),
                 'pagination'=>false
             )
         );
 
+        //список дней для которых есть архивы
+        $days = array();
+        foreach($dataProvider->getData() as $archive){
+            $days[$archive->day] = 1;
+        }
+
         $this->render('cal',array(
             'dataProvider'=>$dataProvider,
-            'cid'=>$cid,
-            'year'=>$y,
-            'month'=>$m
+            'cam'=>$cam,
+            'year'=>$year,
+            'month'=>$month,
+            'days'=>$days,
         ));
     }
 
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex($cid,$y,$m,$d)
+	public function actionIndex($cam_id, $year, $month, $day)
 	{
+        $cam = $this->getCamHard($cam_id);
 
-        $model=new Archive('search');
-        $model->unsetAttributes();  // clear any default values
-        $model->cam_id = $cid;
+        $archive=new Archive('search');
+        $archive->unsetAttributes();  // clear any default values
+        $archive->cam_id = $cam->id;
 
-        //параметры поиска
+        //параметры поиска, через ajax-get
         if(isset($_GET['Archive']))
-            $model->attributes=$_GET['Archive'];
+            $archive->attributes=$_GET['Archive'];
 
-        $this->render('index1',array(
-            'model'=>$model,
-            'y'=>$y,
-            'm'=>$m,
-            'd'=>$d,
+        $this->render('index/main',array(
+            'cam' => $cam,
+            'archive' => $archive,
+            'year' => $year,
+            'month' => $month,
+            'day' => $day,
         ));
-        return;
 	}
 
     public function getFile($path){
@@ -188,11 +232,13 @@ class ArchiveController extends Controller
         $model = $this->loadModel($id);
         $file = $model->pathMp4();
         if(!$file) $file = $model->pathAvi();
-        $file = str_replace('/home/vlc/vlc/rec','',$file);
-        $file = str_replace('/home/vlc/web/rec','',$file);
-        $file = str_replace('/home/vlc/vlc/rec','',$file);
-        $file = str_replace('/home/vlc/dvr/rec','',$file);
-        $file = str_replace('/home/vlc/mount/rec','',$file);
+        $file = str_replace('/home/vlc/vlc','',$file);
+        $file = str_replace('/home/vlc/web','',$file);
+        $file = str_replace('/home/vlc/vlc','',$file);
+        $file = str_replace('/home/vlc/dvr','',$file);
+        $file = str_replace('/home/vlc/mount','',$file);
+
+        //$file = str_replace('.mp4','',$file);
         //return $file;
         return MyConfig::getNginxArchiveUrl($file);
     }
@@ -202,8 +248,8 @@ class ArchiveController extends Controller
         $file = $model->pathMp4();
         if(!$file) $file = $model->pathAvi();
         $size = filesize($file);
-        $file = str_replace('/home/vlc/vlc/rec','',$file);
-        $file = str_replace('/home/vlc/web/rec','',$file);
+        $file = str_replace('/home/vlc/vlc','',$file);
+        $file = str_replace('/home/vlc/web','',$file);
 
         //return $file;
         $id = "$file&size=$size&name=".basename($file);
@@ -223,6 +269,7 @@ class ArchiveController extends Controller
             exec($cmd);
         }*/
 
+        // todo: перенести логику на сторону модели
         $file = $model->pathMp4();
         if(!$file) $file = $model->pathAvi();
 
@@ -262,7 +309,7 @@ class ArchiveController extends Controller
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	/*public function actionAdmin()
 	{
 		$model=new Archive('search');
 		$model->unsetAttributes();  // clear any default values
@@ -272,7 +319,7 @@ class ArchiveController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
-	}
+	}*/
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
@@ -283,9 +330,12 @@ class ArchiveController extends Controller
 	 */
 	public function loadModel($id)
 	{
+        /** @var Archive $model */
 		$model=Archive::model()->findByPk($id);
-		if($model===null)
+		if($model === null)
 			throw new CHttpException(404,'The requested page does not exist.');
+        $this->getCamHard($model->cam_id);
+
 		return $model;
 	}
 
