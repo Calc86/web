@@ -1,9 +1,10 @@
 <?php
 /* @var $this ArchiveController */
 /* @var $data Archive */
+
 ?>
 
-<a class="view" href="<?php echo $this->createUrl('view', array('id'=>$data->id)); ?>">
+<a class="view <?=$data->type?>" href="<?php echo $this->createUrl('view', array('id'=>$data->id)); ?>">
 
 	<!--<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
