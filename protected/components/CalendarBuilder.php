@@ -7,6 +7,9 @@
  */
 class CalendarBuilder extends CComponent
 {
+    const INDEX_MONTH = 'month';
+    const INDEX_YEAR = 'year';
+
     protected $d;
     protected $m;
     protected $y;
@@ -109,8 +112,8 @@ class CalendarBuilder extends CComponent
     public function getDate($offset){
         if($offset == 0)
             return array(
-                'y' => $this->getYear(),
-                'm' => $this->getMonth(),
+                self::INDEX_YEAR => $this->getYear(),
+                self::INDEX_MONTH => $this->getMonth(),
             );
         $m = $this->getMonth() + $offset;
         $y = $this->getYear();
@@ -123,8 +126,8 @@ class CalendarBuilder extends CComponent
             $m = $m + 12;
         }
         return array(
-            'y' => $y,
-            'm' => $m,
+            self::INDEX_YEAR => $y,
+            self::INDEX_MONTH => $m,
         );
     }
 
@@ -136,8 +139,8 @@ class CalendarBuilder extends CComponent
             $y = $y - 1;
         }
         return array(
-            'y' => $y,
-            'm' => $m,
+            self::INDEX_YEAR => $y,
+            self::INDEX_MONTH => $m,
         );
     }
 
@@ -149,8 +152,8 @@ class CalendarBuilder extends CComponent
             $y = $y + 1;
         }
         return array(
-            'y' => $y,
-            'm' => $m,
+            self::INDEX_YEAR => $y,
+            self::INDEX_MONTH => $m,
         );
     }
 
@@ -239,13 +242,13 @@ class CalendarBuilder extends CComponent
         $ret.= '<div class="calendar">';
             $ret.= '<a href="'.$controller->createUrl($controller->getRoute(), array_merge($params, $this->getDate(-1))).'" class="left">&nbsp;</a>';
             for($i = -2; $i<3; $i++){
-                $m = $this->getDate($i)['m'];
-                $m_name = strtoupper($this->getMonthName($m));
-                $y = $this->getDate($i)['y'];
+                $month = $this->getDate($i)[self::INDEX_MONTH];
+                $monthName = strtoupper($this->getMonthName($month));
+                //$y = $this->getDate($i)[self::INDEX_YEAR];
                 $url = $controller->createUrl($controller->getRoute(), array_merge($params, $this->getDate($i)) );
                 $on = '';
                 if($i==0) $on=' on';
-                $ret.= '<a href="'.$url.'" class="month'.$on.'">'.$m_name.'</a>';
+                $ret.= '<a href="'.$url.'" class="month'.$on.'">'.$monthName.'</a>';
             }
             $ret.= '<a href="'.$controller->createUrl($controller->getRoute(), array_merge($params, $this->getDate(1))).'" class="right">&nbsp;</a>';
         $ret.= '</div>';
