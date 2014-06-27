@@ -17,12 +17,18 @@
  */
 class Archive extends CActiveRecord
 {
+    const LIVE = Cam::LIVE;
+    const RECORD = Cam::RECORD;
+    const MOTION = Cam::MOTION;
+    const TIMELAPSE = 'timelapse';
+
     public $h1;
     public $h2;
 
     public $day;
 
     public function init(){
+        // todo: разобрать этот мусор
         /** @var CWebApplication $app */
         $app = Yii::app();
         if(isset($app->session[$this->tableName().'_search_h1']))
@@ -127,6 +133,7 @@ class Archive extends CActiveRecord
         $criteria->compare('cam_id',$this->cam_id);
         $criteria->addBetweenCondition('date_start',$start,$end);
         $criteria->addCondition("rebuilded='yes'");
+        $criteria->order = 'date_end';
 
 		/*$criteria->compare('id',$this->id);
 		$criteria->compare('cam_id',$this->cam_id);
@@ -159,7 +166,10 @@ class Archive extends CActiveRecord
 	}
 
     public function pathMp4(){
-        return realpath($this->file.'.mp4');
+        if(strpos($this->file, '.mp4') === false)
+            return realpath($this->file.'.mp4');
+        else
+            return realpath($this->file);
     }
 
     public function pathAvi(){
