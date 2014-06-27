@@ -20,7 +20,7 @@ $this->menu=array(
 
 <h1><?=$cam->name?> <?=$year?>-<?=$month?>-<?=$day?> <span id="range"><?=$archive->h1?>-<?=$archive->h2?></span> hours</h1>
 
-<?php $this->renderPartial('_search1',array(
+<?php $this->renderPartial('index/_hoursSlider',array(
 	'model'=>$archive,
 )); ?>
 
