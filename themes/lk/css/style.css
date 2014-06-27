@@ -438,6 +438,19 @@ a.user_data{
     color: #999999;
 }
 
+/* .view[.sql:Archive->type]*/
+#archive .items .view.rec{
+    background-color: darkgreen;
+}
+
+#archive .items .view.mtn{
+    background-color: darkred;
+}
+
+#archive .items .view.timelapse{
+    background-color: darkblue;
+}
+
 
 
 /* --------------------------- Календарь ---------------------------  */
