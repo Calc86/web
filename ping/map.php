@@ -19,13 +19,13 @@ $a_x = 1130; //-400 - отображаемая зона по умолчанию
 $a_y = 450;
 
 $x = \ping\Web::getVar('x', 0);
-$y = \ping\Web::getVar('y', 0);
+$year = \ping\Web::getVar('y', 0);
 $web = new \ping\Web();
 $body = $web->lamps();
 
 $html = file_get_contents("./index.tmp.php");
 $html = str_replace("{X}", $x,$html);
-$html = str_replace("{Y}", $y,$html);
+$html = str_replace("{Y}", $year,$html);
 $html = str_replace("{A_X}", $a_x,$html);
 $html = str_replace("{A_Y}", $a_y,$html);
 $html = str_replace("{W}", 3284,$html);
