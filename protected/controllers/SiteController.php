@@ -149,48 +149,13 @@ class SiteController extends Controller
 	}
 
     public function actionRoles(){
-        /** @var CWebApplication $app */
-        $app = Yii::app();
-
-        if($app->user->checkAccess('installRoles'))
+        if(WebYii::app()->user->checkAccess(UserRoles::INSTALL_ROLES, array(), false))
             throw new CHttpException(403,'Forbidden');
 
-        $auth = $app->authManager;
-        /* @var $auth PhpAuthManager */
+        $roles = new UserRoles();
+        $roles->create();
 
-        $auth->clearAll();
-
-        $bizRule = 'return Yii::app()->user->id == $params["user"]->id;';
-        $auth->createOperation('createUser','создание пользователя');
-        $auth->createOperation('viewUser','просмотр пользователя');
-        $task = $auth->createTask('viewOwnUser','просмотр своего пользователя',$bizRule);
-        $task->addChild('viewUser');
-        $auth->createOperation('updateUser','изменение пользователя');
-        $auth->createOperation('updateOwnUser','изменение своего пользователя');
-        $auth->createOperation('deleteUser','удаление пользователя');
-        $auth->createOperation('changeRole','изменение роли пользователя');
-        $auth->createOperation('installRoles','Запуск установщика правил пользователей');
-
-
-        $role = $auth->createRole('guest');
-
-        $role = $auth->createRole('user');
-        $role->addChild('viewOwnUser');
-        $role->addChild('updateOwnUser');
-
-        $role = $auth->createRole('moderator');
-        $role->addChild('user');
-        $role->addChild('viewUser');
-        $role->addChild('updateUser');
-
-        $role = $auth->createRole('admin');
-        $role->addChild('moderator');
-        $role->addChild('createUser');
-        $role->addChild('changeRole');
-        $role->addChild('deleteUser');
-        $role->addChild('installRoles');
-
-        $auth->save();
+        print_r($roles->getAuthManager());
 
         $this->render('roles');
     }
