@@ -18,8 +18,8 @@
 	$c = new xmlrpc_client("http://phpxmlrpc.sourceforge.net/server.php");
 	print "<h3>methods available at http://" . $c->server . $c->path .  "</h3>\n";
 
-	$m = new xmlrpcmsg('system.listMethods');
-	$r =& $c->send($m);
+	$month = new xmlrpcmsg('system.listMethods');
+	$r =& $c->send($month);
 	if($r->faultCode())
 	{
 		display_error($r);
